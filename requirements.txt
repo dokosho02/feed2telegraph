@@ -1,0 +1,7 @@
+telegram_send==0.34
+feedparser==6.0.10
+schedule==1.1.0
+beautifulsoup4==4.11.1
+telegraph_api==1.0.6
+requests
+pykakasi
