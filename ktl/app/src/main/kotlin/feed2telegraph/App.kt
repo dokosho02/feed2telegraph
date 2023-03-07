@@ -3,34 +3,29 @@
  */
 package feed2telegraph
 
-import com.rometools.rome.feed.synd.SyndFeed
-import com.rometools.rome.io.SyndFeedInput
-import com.rometools.rome.io.XmlReader
-import java.net.URL
 
 fun main() {
     // Set the URL of the RSS feed
-    val feedUrl = "https://www.billboard-japan.com/d_news/doc.xml"
+    // val feedUrl = "https://www.billboard-japan.com/d_news/doc.xml"
 
-    // Create a new instance of the feed parser
-    val input = SyndFeedInput()
+    // val feed = Feed(
+    //     link  = feedUrl,
+    //     title = "billboard-japan",
+    //     lang  = "jpn",
+    //     translated = false,
+    // )
 
-    // Parse the feed
-    val feed = input.build(XmlReader(URL(feedUrl))) as SyndFeed
+    val feed = Feed(
+        link  = "https://rsshub.app/kbs/today/e",
+        title = "kbs_eng",
+        lang  = "eng",
+        channelId = "-50",
+        translated = false,
+    )
 
-    // Print the feed information
-    println("Feed Title: ${feed.title}")
-    println("Feed Description: ${feed.description}")
-    println("Feed Link: ${feed.link}")
-    println("Feed Language: ${feed.language}")
+    feed.parse()
+
     
-    println(feed.entries.first())
-    println("*".repeat(10))
-    // Print the feed entries
-    feed.entries.forEach { entry ->
-        println("Entry Title: ${entry.title}")
-        println("Entry Link: ${entry.link}")
-        println("Entry Author: ${entry.author}")
-        println("Entry Published Date: ${entry.publishedDate}")
-    }
+
+
 }

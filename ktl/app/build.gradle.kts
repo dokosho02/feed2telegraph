@@ -35,6 +35,11 @@ dependencies {
     // sqlite
     implementation("org.xerial:sqlite-jdbc:3.36.0")
 
+    // slf4j
+    implementation("org.slf4j:slf4j-api:1.7.32")
+    implementation("org.slf4j:slf4j-simple:1.7.32")
+
+
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 
