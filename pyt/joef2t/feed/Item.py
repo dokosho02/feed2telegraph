@@ -14,7 +14,6 @@ import html2text
 import joef2t.setttings.config as cfg
 import joef2t.utils.sqliteBind as sqliteBind
 
-
 # ---------------------------------------------
 class Item():
     def __init__(self,
@@ -85,6 +84,8 @@ class Item():
 
         # ---------------
         try:
+            self.write2sql()
+
             self.resUrl = asyncio.run(
                 write2Telegraph(
                     title=f"{self.title} - {self.feedName}",
@@ -103,8 +104,6 @@ class Item():
                 parse_mode="markdown",
                 conf=self.conf
             )
-
-            self.write2sql()
         except Exception as e:
             print(f"{self.link}\n{e}")
 
