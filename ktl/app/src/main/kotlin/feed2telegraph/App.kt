@@ -20,9 +20,10 @@ fun main() {
         title = "kbs_eng",
         lang  = "eng",
         channelId = "-50",
-        translated = false,
+        translated = 1,
     )
 
+    feed.write2sqlite()
     feed.parse()
 
     
