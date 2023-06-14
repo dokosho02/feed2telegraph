@@ -5,9 +5,10 @@ from pathlib import Path
 
 
 
-parentFolder = "/Users/user/Library/CloudStorage/OneDrive-mails.ucas.ac.cn/apps/feed2telegraph"
+parentFolder = "/Users/user/Library/CloudStorage/OneDrive-mails.ucas.ac.cn/apps/feed2tele"
 
-ph = join( Path.home(), "cfg")
+# ph = join( Path.home(), "cfg")
+ph = join( parentFolder, "cfg")
 
 glossaryEng = join(ph, "glossary_eng.md")
 
@@ -101,7 +102,8 @@ avf = "avf"
 
 # sql
 
-database = r"feedsArticles.db"
+database =join( parentFolder, "data", r"feedsArticles.db" )
+
 feed_table_name = "feeds"
 article_table_name = "articles"
 

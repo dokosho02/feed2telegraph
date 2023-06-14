@@ -1,13 +1,15 @@
+# kotlin
 # Ignore Gradle project-specific cache directory
 .gradle
 
 # Ignore Gradle build output directory
 build
-__pycache__
 
-*.pyc
 
+# macos
 .DS_Store
-.idea
 
+# python
+__pycache__
+last
 

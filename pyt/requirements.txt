@@ -5,3 +5,8 @@ beautifulsoup4==4.11.1
 telegraph_api==1.0.6
 requests
 pykakasi
+tqdm
+wiktionaryparser
+nltk
+pygtrans
+python-telegram-bot==13.11

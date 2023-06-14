@@ -84,7 +84,7 @@ class Item():
 
         # ---------------
         try:
-            self.write2sql()
+            # self.write2sql()
 
             self.resUrl = asyncio.run(
                 write2Telegraph(

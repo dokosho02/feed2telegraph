@@ -6,6 +6,7 @@ import com.rometools.rome.io.SyndFeedInput
 import com.rometools.rome.io.XmlReader
 import java.net.URL
 
+// 5 parameters
 data class Feed(
     val link:  String,
     val title: String,
