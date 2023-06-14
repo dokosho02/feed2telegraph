@@ -5,3 +5,8 @@
 build
 
 *.pyc
+
+.DS_Store
+.idea
+
+
