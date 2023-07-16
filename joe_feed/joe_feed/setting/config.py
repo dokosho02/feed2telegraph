@@ -1,9 +1,10 @@
 from os.path import join
 from pathlib import Path
-
+import os
 # ------------
 
-parentFolder = "/Users/user/Library/CloudStorage/OneDrive-mails.ucas.ac.cn/apps/feed2tele"
+odf = os.environ['odf']
+parentFolder = join(odf, "apps", "feed2tele")
 
 # ph = join( Path.home(), "cfg")
 ph = join( parentFolder, "cfg")
@@ -82,7 +83,7 @@ weibo = "weibo"
 
 # wexin
 wxoa = "wxoa"
-wxsl = "wxsl"  #z wxoa selected
+wxsl = "wxsl"  # wxoa selected
 wxhm = "wxhm"
 HIMMR= "himmr"
 univ = "univ"

@@ -263,8 +263,8 @@ class Feed():
 # --------------------------
 def main():
     Feed(
-        link       = "https://rsshub.app/sspai/index",
-        title      = "sspai",
+        link       = "https://rsshub.app/geekpark/breakingnews",
+        title      = "geekpark",
         config     = cfg.daily,
         lang       = langue.zhs,
         translated = tsl.n,
