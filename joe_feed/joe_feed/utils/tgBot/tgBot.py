@@ -1,61 +1,44 @@
-import telegram
-from telegram.ext import Updater
-from telegram.ext import CommandHandler
-# from telegram.ext import MessageHandler, Filters
+import schedule
+import time, os
 
 
-class tgBot():
-    def __init__(self, token, startWord, helpWord):
-        self.token     = token
-        self.startWord = startWord
-        self.helpWord  = helpWord
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
 
-        # ----
-        self.pairs = []
-        self.updater = Updater(token=self.token, use_context=True)
-        self.dispatcher = self.updater.dispatcher
+from joe_feed.utils.telegra.telegra import get_updates
 
-    # -------------------------------
-    def start_command(self, update, context):
-        context.bot.send_message(
-            chat_id=update.message.chat_id,
-            text=self.startWord,
-            parse_mode=telegram.ParseMode.MARKDOWN
-        )
-    # -------------------------------
-    def help_command(self, update, context):
-        context.bot.send_message(
-            chat_id=update.message.chat_id,
-            text=self.helpWord,
-            parse_mode=telegram.ParseMode.MARKDOWN
-        )
-    # -------------------------------
-    def basicCommands(self):
-        # command
-        # basic - start and help
-        basics = [
-            ["start", self.start_command],
-            ["help",  self.help_command ],
-        ]
+# Replace 'YOUR_TOKEN' with your actual bot token
+TOKEN = os.environ['Tsidin']
 
-        for c in basics:
-            self.pairs.append(c)
-    # -------------------------------
-    def advancedCommands(self):
-        pass
-    # -------------------------------
-    def addCommands(self):
-        self.commands  = [item[0] for item in self.pairs]
-        self.functions = [item[1] for item in self.pairs]
-        # schedule commands
-        for (co, fu) in zip(self.commands, self.functions):
-            handler = CommandHandler(co,fu)
-            self.dispatcher.add_handler(handler)
-    # -------------------------------
+# def send_message(update: Update, context: CallbackContext):
+#     chat_id = update.message.chat_id
+#     context.bot.send_message(chat_id=chat_id, text='Hello, this is a repeated message!')
 
-    def run(self):
-        self.basicCommands()
-        self.advancedCommands()
-        self.addCommands()
-        
-        self.updater.start_polling()
+def job():
+    updater = Updater(TOKEN, use_context=True)
+    print("bot created")
+    # Replace 'YOUR_CHAT_ID' with the chat ID you want to send the message to
+    chat_id = -1001849856114
+    ts = get_updates()
+    for t in ts:
+        print(t)
+        updater.bot.send_message(chat_id=chat_id, text=t)
+        time.sleep(1)
+
+def main():
+    print("start")
+    # Get the job running every 5 seconds (adjust the interval as needed)
+    schedule.every(2).minutes.do(job)
+
+    # Uncomment the following lines if you want to use a command to send a message
+    # updater.dispatcher.add_handler(CommandHandler('send_message', send_message))
+
+    # job()
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+    # updater.start_polling()
+    # updater.idle()
+
+if __name__ == '__main__':
+    main()

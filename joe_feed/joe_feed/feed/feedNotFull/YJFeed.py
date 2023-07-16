@@ -1,12 +1,12 @@
 # from joef2t.feed.Feed import Feed
-from joef2t.feed.feedNotFull.NotFullFeed import NotFullFeed
+from joe_feed.feed.feedNotFull.NotFullFeed import NotFullFeed
 
-from joef2t.setttings import config as cfg
-from joef2t.setttings.Languages import Translated as tsl
-from joef2t.setttings.Languages import Languages as lang
+from joe_feed.setting import config as cfg
+from joe_feed.setting.Languages import Translated as tsl
+from joe_feed.setting.Languages import Languages as lang
 
-from joef2t.utils.web import webCode
-from joef2t.utils.html import removeAttrExceptHrefSrc
+from joe_feed.utils.core.web import webCode
+from joe_feed.utils.core.html import removeAttrExceptHrefSrc
 
 from bs4 import BeautifulSoup
 
@@ -95,7 +95,7 @@ class YJFeed(NotFullFeed):
 # --------------------------
 def main():
     # YJFeed("https://news.yahoo.co.jp/rss/categories/domestic.xml", "yj_domestic", cfg.yjn)
-    YJFeed("https://news.yahoo.co.jp/rss/categories/local.xml","yj_local", cfg.yjnl, lang.jpn, tsl.n).run()
+    YJFeed("https://news.yahoo.co.jp/rss/media/cnippou/all.xml","cnippou", cfg.yjnl, lang.jpn, tsl.n).run()
 
 # --------------------------
 

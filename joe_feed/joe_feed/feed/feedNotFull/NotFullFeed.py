@@ -1,4 +1,4 @@
-from joef2t.feed.Feed import Feed
+from joe_feed.feed.Feed import Feed
 
 class NotFullFeed(Feed):
     def __init__(self,link, title, config, lang, translated ):

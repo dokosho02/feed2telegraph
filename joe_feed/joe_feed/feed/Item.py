@@ -6,12 +6,6 @@ import joe_feed.utils.core.sqliteBind as sqliteBind
 from joe_feed.setting.Languages import Languages as langue
 import joe_feed.setting.config as cfg
 
-# from joef2t.utils.kanaJPN import kanaConvert
-# import asyncio
-# import telegram_send as ts
-
-# from pygtrans import Translate
-# import html2text
 # ---------------------------------------------
 class Item():
     def __init__(self,
@@ -26,6 +20,7 @@ class Item():
         feedLink,
         lang,
         translated,
+        feed_id,
         conf
         ):
         self.title     = title
@@ -40,7 +35,7 @@ class Item():
         self.lang      = lang
         self.translated= translated
         self.conf      = conf
-
+        self.feed_id   = feed_id
         self.au = ""
         self.kw = ""
         # self.resUrl    = ""
@@ -49,6 +44,11 @@ class Item():
 
         print(f"""\t{self.chapterNo}\t{TerminalColors.OKCYAN}{self.title}{TerminalColors.ENDC}\n\t{self.link}\n\t{self.time}""")
 
+        if len(self.authors) >0:
+            self.au = ", ".join(self.authors)
+
+        if len(self.keyWords) >0:
+            self.kw = ", ".join(self.keyWords)
         # ---------------
         try:
             self.write2sql()
@@ -58,48 +58,24 @@ class Item():
     def write2sql(self):
         conn = sqliteBind.create_connection(cfg.database)
         if conn is not None:
-            articles = []
-            try:
-                rows = sqliteBind.select_items_by_property(conn, cfg.article_table_name, p="feed_link",v=self.feedLink)
-                if len(rows) > 0:
-                    for ro in rows:
-                        articles.append(ro[2])
-            except:
-                print(f"\tno feed_name - {self.feedLink} in articles")
+            articleElement = (
+                self.title,  # title
+                self.link,   # link
+                self.time,    # date, later to modify
+                self.contents, # contents
+                self.au,      # authors
+                self.lang,    # lang
+                self.kw,      # tags
+                "",           # type
+                "",           # iv link
+                0,            # read
+                0,            # starred
+                self.feed_id
+            )
 
-            if self.link not in articles:
-                feed_id = 0
-                try:
-                    rows = sqliteBind.select_items_by_property(conn, cfg.feed_table_name, p="link",v=self.feedLink)
-                    for ro in rows:
-                        feed_id = ro[0]
-                except:
-                    print(f"no title in feeds - {self.feedName}")
-                    
-                print(feed_id)
-
-                articleElement = (
-                    self.title,
-                    self.link,
-                    "",    # date, later to modify
-                    self.contents,
-                    self.au,
-                    self.lang,
-                    self.kw,
-                    "",
-                    0,
-                    0,
-                    "",
-                    "",
-                    self.feedName,
-                    self.feedLink,
-                    feed_id
-                )
-
-                terminalWord = f"""\t{TerminalColors.OKCYAN}article inserted - {self.title}{TerminalColors.ENDC}"""
-                sqliteBind.insert_item(conn, cfg.article_insert_sql, articleElement)
-                print(terminalWord)
-
+            terminalWord = f"""\t{TerminalColors.OKCYAN}article inserted - {self.title}{TerminalColors.ENDC}"""
+            sqliteBind.insert_item(conn, cfg.article_insert_sql, articleElement)
+            print(terminalWord)
 
     # #  -------------------------------------
     # def translate(self):

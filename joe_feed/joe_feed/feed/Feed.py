@@ -9,7 +9,6 @@ from pprint import pprint
 from joe_feed.feed.Item import Item
 from joe_feed.utils.core.file import createFile, readText
 from joe_feed.utils.core.terminal import TerminalColors
-from joe_feed.utils.core.html import removeAttrExceptHrefSrc, retainText
 import joe_feed.utils.core.sqliteBind as sqliteBind
 
 import joe_feed.setting.config as cfg
@@ -31,7 +30,7 @@ class Feed():
         self.newItems  = []
 
         # folders
-        self.lastFolder = "last"
+        self.lastFolder = cfg.last_folder
         # self.jsonFolder = "json"
         
         print(f"feed - conf/n{self.conf}")
@@ -69,6 +68,8 @@ class Feed():
         self.feed = feedparser.parse(self.link)
         self.entries = self.feed["entries"]
         print( f"\t{TerminalColors.OKBLUE}{len(self.entries)}{TerminalColors.ENDC} - entries amount in current session" )
+
+
     # -------------------------------
     def removeOldItems(self):
         self.getLastLinks()
@@ -177,14 +178,16 @@ class Feed():
         except Exception as e:
             print(f"{e}\nNo time label")
         
-        entryContent = removeAttrExceptHrefSrc(entryContent)
-        entryContent = self.refineContents(entryContent)
+        # entryContent = removeAttrExceptHrefSrc(entryContent)
+        # entryContent = self.refineContents(entryContent)
 
         return (entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt)
     # -------------------------------
     def processNewItems(self):
         if (len(self.newItems) > 0):
             self.newItems.reverse()
+            self.get_id()
+            print(f"feed id = {self.id}")
 
             for i in tqdm( range(len(self.newItems))):
                 entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt = self.processSingleItem(i)
@@ -203,6 +206,7 @@ class Feed():
                 feedLink  = self.link,
                 lang      = self.lang,
                 translated= self.translated,
+                feed_id   = self.id,
                 conf      = self.conf,
                 )
             self.write2LastFiles()
@@ -259,6 +263,18 @@ class Feed():
             sqliteBind.create_table(conn, cfg.sql_create_articles_table)
         else:
             print("Error! cannot create the database connection.")
+
+    def get_id(self):
+        conn = sqliteBind.create_connection(cfg.database)
+        if conn is not None:
+            self.id = 0
+            try:
+                rows = sqliteBind.select_items_by_property(conn, cfg.feed_table_name, p="link",v=self.link)
+                if len(rows) > 0:
+                    for ro in rows:
+                        self.id = ro[0]
+            except:
+                print(f"\tno feed - {self.feedLink}")
 
 # --------------------------
 def main():

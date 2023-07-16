@@ -1,6 +1,8 @@
 from os.path import join
 from pathlib import Path
 import os
+
+from joe_feed.utils.core.time import get_current_utc0
 # ------------
 
 odf = os.environ['odf']
@@ -101,7 +103,10 @@ avf = "avf"
 
 # sql
 
-database =join( parentFolder, "data", r"feedsArticles.db" )
+# generate filename with current year and month
+current = get_current_utc0()
+database =join( parentFolder, "data", f"feeds_{str(current.year).zfill(4)}_{str(current.month).zfill(2)}.db" )
+last_folder = join( parentFolder, "last" )
 
 feed_table_name = "feeds"
 article_table_name = "articles"
@@ -125,22 +130,28 @@ sql_create_articles_table = f"""CREATE TABLE IF NOT EXISTS {article_table_name} 
     language text,
     tags text,
     type text,
+    iv_link text,
     read integer,
     starred integer,
-    kakasi text,
-    translation text,
-    feed_name text,
-    feed_link text,
     feed_id integer,
     FOREIGN KEY (feed_id) REFERENCES feeds (id)
 );"""
+
+    # feed_name text,
+    # feed_link text,
+    # feed_id integer,
+    # translation text,
+    # kakasi text,
+
+
+# question_feed = "?"
 
 feed_insert_sql = f"""INSERT INTO {feed_table_name}(title, link, language, channel, translated)
 VALUES(?,?,?,?,?)
     """
 
-article_insert_sql = f"""INSERT INTO {article_table_name}(title, link, date, contents, authors, language, tags, type,read, starred, kakasi, translation, feed_name, feed_link, feed_id)
-VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+article_insert_sql = f"""INSERT INTO {article_table_name}(title, link, date, contents, authors, language, tags, type, iv_link, read, starred, feed_id)
+VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
 """
 select_feed_sql = f"""SELECT * FROM {feed_table_name} WHERE link="""
 
