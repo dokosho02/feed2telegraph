@@ -3,8 +3,8 @@ from joef2t.feed.feedNotFull.YJFeed import YJFeed
 from joef2t.feed.feedNotFull.WXOAFeed import WXOAFeed
 from joef2t.feed.feedNotFull.BillBoardJa import BillBoardJa
 
-from joef2t.setttings import config as cfg
 from joef2t.setttings.journals import journalRSS
+from joef2t.setttings import config as cfg
 from joef2t.setttings.Languages import Languages as lang
 from joef2t.setttings.Languages import Translated as tsl
 
