@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "joe_feed"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
 tqdm = "^4.65.0"
 feedparser = "6.0.10"
 requests = "^2.31.0"
