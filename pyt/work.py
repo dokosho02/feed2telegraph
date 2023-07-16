@@ -178,7 +178,7 @@ ershicimi = [
     ["https://rsshub.app/wechat/ershicimi/wDOqGBQ4", "old_driver_business", cfg.wxsl, lang.zhs, tsl.n], # "https://api.feeddd.org/feeds/61f3d472dca58a380c4fc131"
     ["https://rsshub.app/wechat/ershicimi/EOd8GKO4",        "mylifeano",    cfg.wxsl, lang.zhs, tsl.n],
     ["https://rsshub.app/wechat/ershicimi/LRjlqAQD",        "diqiuzhishiju",cfg.wxsl, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/M3ekLwjl",        "Doctor_X",     cfg.wxsl, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/613381fa1269c358aa0eafc9"
+    # ["https://rsshub.app/wechat/ershicimi/M3ekLwjl",        "Doctor_X",     cfg.wxsl, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/613381fa1269c358aa0eafc9"
     ["https://rsshub.app/wechat/ershicimi/mQ4RDeO4",        "guokr42",      cfg.wxsl, lang.zhs, tsl.n],
     # code
     ["https://rsshub.app/wechat/ershicimi/NjpEdVQB",      "osc_ops",  cfg.cgd,  lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/61514f7e1269c358aa13c8e5"
@@ -291,21 +291,7 @@ def hourly():
         except Exception as e:
             print(f"{rss[0]}\n{rss[1]}\n{e}")
     # -----------------------------------------
-    # YJ News must be YJFeed()!
-    for rss in yjnews1:
-        try:
-            YJFeed(
-                link  =rss[0],
-                title =rss[1],
-                config=rss[2],
-                lang  =rss[3],
-                translated =rss[4],
-            ).run()
-        except Exception as e:
-            print(f"{rss[0]}\n{rss[1]}\n{e}")
-
-    # --------------------------
-def minutely():
+    # wexin
     for rss in weixin:
         try:
             WXOAFeed(
@@ -329,7 +315,22 @@ def minutely():
             ).run()
         except Exception as e:
             print(f"{rss[0]}\n{rss[1]}\n{e}")
+    # -----------------------------------------
+    # YJ News must be YJFeed()!
+    for rss in yjnews1:
+        try:
+            YJFeed(
+                link  =rss[0],
+                title =rss[1],
+                config=rss[2],
+                lang  =rss[3],
+                translated =rss[4],
+            ).run()
+        except Exception as e:
+            print(f"{rss[0]}\n{rss[1]}\n{e}")
 
+    # --------------------------
+def minutely():
     for rss in yjnews2:
         try:
             YJFeed(
