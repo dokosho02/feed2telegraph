@@ -53,16 +53,16 @@ def main():
 
 def yj_news():
     for rss in yj_rss:
-        try:
-            YJFeed(
+        # try:
+        YJFeed(
                 link  =rss[0],
                 title =rss[1],
                 config=rss[2],
                 lang  =rss[3],
                 translated =rss[4],
             ).run()
-        except Exception as e:
-            print(f"{rss[0]}\n{rss[1]}\n{e}")
+        # except Exception as e:
+        #     print(f"{rss[0]}\n{rss[1]}\n{e}")
 # ------------------------------------------------
 
 if __name__ == '__main__':

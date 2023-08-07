@@ -124,7 +124,7 @@ sql_create_articles_table = f"""CREATE TABLE IF NOT EXISTS {article_table_name} 
     id integer PRIMARY KEY,
     title text,
     link text,
-    date text,
+    date integer,
     contents text,
     authors text,
     language text,

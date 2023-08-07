@@ -2,9 +2,14 @@ from joe_feed.utils.core.terminal import TerminalColors
 # from joe_feed.utils.core.html import retainText
 
 import joe_feed.utils.core.sqliteBind as sqliteBind
-# from joe_feed.utils.telegra.telegra import write2Telegraph
+from joe_feed.utils.telegra.telegra import write2Telegraph
+from joe_feed.utils.tgBot.tgBot import send2chat
 from joe_feed.setting.Languages import Languages as langue
 import joe_feed.setting.config as cfg
+
+
+import asyncio, datetime
+
 
 # ---------------------------------------------
 class Item():
@@ -44,6 +49,14 @@ class Item():
 
         print(f"""\t{self.chapterNo}\t{TerminalColors.OKCYAN}{self.title}{TerminalColors.ENDC}\n\t{self.link}\n\t{self.time}""")
 
+        self.html4Telegraph = f"""
+        <p><a href="{self.link}">Web</a></p>\n
+        <h1>{self.title}</h1>\n
+        <p><br/></p>\n
+        <p>{datetime.datetime.utcfromtimestamp(self.time)}</p>\n
+        """
+
+
         if len(self.authors) >0:
             self.au = ", ".join(self.authors)
 
@@ -51,25 +64,37 @@ class Item():
             self.kw = ", ".join(self.keyWords)
         # ---------------
 
-
     def run(self):
+        self.send2telegraph()
         self.write2sql()
-        # await self.write2Telegraph()
+    # ---------------
+    def send2telegraph(self):
+        self.html4Telegraph += f"""{self.contents}\n"""
+        self.resUrl = asyncio.run(
+                write2Telegraph(
+                    title=f"{self.title} - {self.feedName}",
+                    content = self.html4Telegraph,
+                    author = self.au,
+                )
+            )
+        sendWord = f"{self.resUrl}\n[Web]({self.link})"
+        send2chat(self.conf, sendWord)
     # ----------------------
     def write2sql(self):
         conn = sqliteBind.create_connection(cfg.database)
         if conn is not None:
 
             articleElement = (
+                # self.time,
                 self.title,  # title
                 self.link,   # link
-                self.time,    # date, later to modify
+                self.time,
                 self.contents, # contents
                 self.au,      # authors
                 self.lang,    # lang
                 self.kw,      # tags
                 "",           # type
-                "",           # iv link
+                self.resUrl,  # iv link
                 0,            # read
                 0,            # starred
                 self.feed_id

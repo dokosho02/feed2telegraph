@@ -13,6 +13,7 @@ from joe_feed.utils.core.file import createFile, readText
 from joe_feed.utils.core.terminal import TerminalColors
 import joe_feed.utils.core.sqliteBind as sqliteBind
 
+from joe_feed.utils.core.html import removeAttrExceptHrefSrc
 import joe_feed.setting.config as cfg
 from joe_feed.setting.Languages import Languages as langue
 from joe_feed.setting.Languages import Translated as tsl
@@ -178,10 +179,21 @@ class Feed():
         # time
         dt = ""
         try:
-            dt = entry["published"]
+            dt0 = entry["published"]
+            print(dt0)
+            struct_time = entry["published_parsed"]
+            print(struct_time)
+            # Convert struct_time to Unix timestamp
+            unix_timestamp = time.mktime(struct_time)
+            print(unix_timestamp)
+            dt = int(unix_timestamp)
         except Exception as e:
             print(f"{e}\nNo time label")
-        
+
+
+        entryContent = removeAttrExceptHrefSrc(entryContent)
+        entryContent = self.refineContents(entryContent)
+
         item = Item(
             title     = entryTitle,
             chapterNo = str(i+1),
@@ -200,37 +212,31 @@ class Feed():
 
         print(f"complete item {i+1}/{len(self.newItems)}")
 
-        # entryContent = removeAttrExceptHrefSrc(entryContent)
-        # entryContent = self.refineContents(entryContent)
-
         # return (entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt)
     # -------------------------------
     def processNewItems(self):
         if (len(self.newItems) > 0):
-            start_time = time.time()
+            # start_time = time.time()
 
             self.newItems.reverse()
             self.get_id()
-            print(f"feed id = {self.id}")
+            # print(f"feed id = {self.id}")
 
-            tasks = list(range(len(self.newItems)))
-            with ThreadPoolExecutor() as executor:
-                executor.map(self.processSingleItem, tasks)
+            # tasks = list(range(len(self.newItems)))
+            # with ThreadPoolExecutor() as executor:
+            #     executor.map(self.processSingleItem, tasks)
 
-            # tasks = []
-            # for i in tqdm( range(len(self.newItems))):
-            # for i in range(len(self.newItems)):
-            #     tasks.append(self.processSingleItem(i))
-
+            for i in tqdm( range(len(self.newItems))):
+                self.processSingleItem(i)
                 # entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt = self.processSingleItem(i)
                 
                 # print(f"before item - {self.conf}")
             # await asyncio.gather(*tasks)
-            end_time = time.time()
+            # end_time = time.time()
 
             self.write2LastFiles()
             print(f"complete - {self.updateInfo}")
-            print(f"Total time taken: {(end_time - start_time) * 1000:.2f} ms")
+            # print(f"Total time taken: {(end_time - start_time) * 1000:.2f} ms")
 
     # -------------------------------
     def getItemContents(self, entry):
