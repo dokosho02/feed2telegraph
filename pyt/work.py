@@ -136,12 +136,27 @@ yjnews  = [
     ["https://news.yahoo.co.jp/rss/media/bbc/all.xml","BBC_News", cfg.bbc, lang.jpn, tsl.n ],
     ["https://news.yahoo.co.jp/rss/media/kyodonews/all.xml","kyodo_News", cfg.kyodo, lang.jpn, tsl.n ],
     ["https://news.yahoo.co.jp/rss/media/rescuenow/all.xml","rescuenow", cfg.rescue, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/tenki/all.xml","tenki", cfg.rescue, lang.jpn, tsl.n ],
 
+    # it
     ["https://news.yahoo.co.jp/rss/media/zdn_m/all.xml",   "zdn_m", cfg.yjni, lang.jpn, tsl.n ],
     ["https://news.yahoo.co.jp/rss/media/impress/all.xml", "impress_watch", cfg.yjni, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/krjapan/all.xml", "36Kr_ja", cfg.yjni, lang.jpn, tsl.n ],
 
-    ["https://news.yahoo.co.jp/rss/media/nksports/all.xml", "nksports", cfg.yjne, lang.jpn, tsl.n ],
+    # world
+    ["https://news.yahoo.co.jp/rss/media/cnn/all.xml",      "cnn_jpn", cfg.yjn, lang.jpn, tsl.n ],
+
+    # life
+    ["https://news.yahoo.co.jp/rss/media/it_nlab/all.xml",     "nlab", cfg.yjnb, lang.jpn, tsl.n ],
+
+
+    # entertainment
+    # ["https://news.yahoo.co.jp/rss/media/nksports/all.xml", "nksports", cfg.yjne, lang.jpn, tsl.n ],
     ["https://news.yahoo.co.jp/rss/media/oric/all.xml", "oric", cfg.yjne, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/bunshun/all.xml", "bunshun", cfg.yjne, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/exp/all.xml", "bbj_exp", cfg.yjne, lang.jpn, tsl.n ],
+
+
 
     # ["https://news.yahoo.co.jp/rss/topics/top-picks.xml",  "yj_top_picks", cfg.yjt ], # delete
     # ["https://news.yahoo.co.jp/rss/categories/domestic.xml","yj_domestic", cfg.yjn, lang.jpn, tsl.n ],
