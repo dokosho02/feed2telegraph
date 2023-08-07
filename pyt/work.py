@@ -184,10 +184,10 @@ ershicimi = [
     ["https://rsshub.app/wechat/ershicimi/mQ4RDeO4",        "guokr42",      cfg.wxsl, lang.zhs, tsl.n],
     # code
     ["https://rsshub.app/wechat/ershicimi/NjpEdVQB",      "osc_ops",  cfg.cgd,  lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/61514f7e1269c358aa13c8e5"
-    ["https://rsshub.app/wechat/ershicimi/dOVD2m7Q",      "coderLib", cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/nqQBbQz0", "pyt_community", cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/vdOVar3e",      "coderHui", cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/PQDwYGNj",    "readPoems",  cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/dOVD2m7Q",      "coderLib", cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/nqQBbQz0", "pyt_community", cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/vdOVar3e",      "coderHui", cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/PQDwYGNj",    "readPoems",  cfg.wxoa, lang.zhs, tsl.n],
 
     # daily
     ["https://rsshub.app/wechat/ershicimi/2jr1rwOY",        "appso",  cfg.daily, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/612703b0221f954f5e10f936"
@@ -200,11 +200,11 @@ ershicimi = [
     ["https://rsshub.app/wechat/ershicimi/bO9lBdp3",       "xjtu", cfg.univ, lang.zhs, tsl.n],
 
     # humor
-    ["https://rsshub.app/wechat/ershicimi/M3e0nnQl",        "meipinbaike",  cfg.wxhm, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/RjGz4zO9",        "hahahabzc",    cfg.wxhm, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/23nKB0Ox",        "lengtoo",      cfg.wxhm, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/43MxPdQE",        "jokeSelected", cfg.wxhm, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/KQ22ADQL",        "ibaoman",      cfg.wxhm, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/M3e0nnQl",        "meipinbaike",  cfg.wxhm, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/RjGz4zO9",        "hahahabzc",    cfg.wxhm, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/23nKB0Ox",        "lengtoo",      cfg.wxhm, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/43MxPdQE",        "jokeSelected", cfg.wxhm, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/KQ22ADQL",        "ibaoman",      cfg.wxhm, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/zQmpE9jN",        "hkspot", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/V3LR9YPj",        "oldSongsForBed", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/XjZ7R1Qw",        "readingclub_btfx", cfg.wxoa, lang.zhs, tsl.n],
@@ -221,13 +221,13 @@ ershicimi = [
     ["https://rsshub.app/wechat/ershicimi/N3N7KWvO",         "HIMMRnanking", cfg.HIMMR, lang.zhs, tsl.n],
     
     # parenting
-    ["https://rsshub.app/wechat/ershicimi/1rQAAEQZ",        "niangao-mama", cfg.prnt, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/4QkP4k3a",        "nverpai",      cfg.prnt, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/13oV1oQl",        "boy666dj",     cfg.prnt, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/pQaDarjJ",        "kexueyuer2012",cfg.prnt, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/kzQmK4ON",        "doctor_DX",    cfg.prnt, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/611f0dcc8fae751e236420c0"
-    ["https://rsshub.app/wechat/ershicimi/wDOq8g34",        "MotherDX",     cfg.prnt, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/dOVVerOe",        "imingbailema", cfg.prnt, lang.zhs, tsl.n],  #https://api.feeddd.org/feeds/63c2828be1190840774cd9a3
+    # ["https://rsshub.app/wechat/ershicimi/1rQAAEQZ",        "niangao-mama", cfg.prnt, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/4QkP4k3a",        "nverpai",      cfg.prnt, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/13oV1oQl",        "boy666dj",     cfg.prnt, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/pQaDarjJ",        "kexueyuer2012",cfg.prnt, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/kzQmK4ON",        "doctor_DX",    cfg.prnt, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/611f0dcc8fae751e236420c0"
+    # ["https://rsshub.app/wechat/ershicimi/wDOq8g34",        "MotherDX",     cfg.prnt, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/dOVVerOe",        "imingbailema", cfg.prnt, lang.zhs, tsl.n],  #https://api.feeddd.org/feeds/63c2828be1190840774cd9a3
     
     # general
     ["https://rsshub.app/wechat/ershicimi/dOVo5X0j",        "kekesil",      cfg.wxoa, lang.zhs, tsl.n],
