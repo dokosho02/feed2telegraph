@@ -16,9 +16,9 @@ from joef2t.feed.scrape.av.AVFeed import AVFeed
 infoTech = [
     ["https://rsshub.app/sspai/index",             "sspai", cfg.daily, lang.zhs, tsl.n],
     ["https://rsshub.app/geekpark/breakingnews","geekPark", cfg.daily, lang.zhs, tsl.n],
-    ["https://feeds.feedburner.com/bookfere",   "bookfere", cfg.daily, lang.zhs, tsl.n],
-    ["https://www.techradar.com/rss",            "techRadar", cfg.tcr, lang.eng, tsl.y],
-    ["https://www.xda-developers.com/feed/",           "xda", cfg.xda, lang.eng, tsl.n],
+    # ["https://feeds.feedburner.com/bookfere",   "bookfere", cfg.daily, lang.zhs, tsl.n],
+    # ["https://www.techradar.com/rss",            "techRadar", cfg.tcr, lang.eng, tsl.y],
+    # ["https://www.xda-developers.com/feed/",           "xda", cfg.xda, lang.eng, tsl.n],
     ["https://rsshub.app/zhihu/daily",         "zhihu_daily", cfg.zhd, lang.zhs, tsl.n],
     ["https://www.ithome.com/rss/",                 "ithome", cfg.ith, lang.zhs, tsl.n],
     # ["https://www.chongdiantou.com/feed",          "charger", cfg.chg, lang.zhs],
@@ -81,7 +81,7 @@ langLearn = [
     ["https://biz.trans-suite.jp/feed",                    "biz-trans", cfg.jpn, lang.jpn, tsl.n],
     ["https://www.haru-no-nihongo.com/blog-feed.xml",       "haru_jpn", cfg.jpn, lang.jpn, tsl.n],
     # ["https://nihongonosensei.net/?feed=rss2", "leisurely_teacher_jpn", cfg.jpn, lang.jpn],
-    ["https://kyoto-koshoken.com/feed/",           "koshoken", cfg.koshoken, lang.jpn, tsl.n],
+    # ["https://kyoto-koshoken.com/feed/",           "koshoken", cfg.koshoken, lang.jpn, tsl.n],
 ]
 
 bbj = [
@@ -132,20 +132,22 @@ yomiuri = [
 
 # -----------------------------------------
 
-yjnews1  = [
+yjnews  = [
+    ["https://news.yahoo.co.jp/rss/media/bbc/all.xml","BBC_News", cfg.bbc, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/kyodonews/all.xml","kyodo_News", cfg.kyodo, lang.jpn, tsl.n ],
     # ["https://news.yahoo.co.jp/rss/topics/top-picks.xml",  "yj_top_picks", cfg.yjt ], # delete
-    ["https://news.yahoo.co.jp/rss/categories/domestic.xml","yj_domestic", cfg.yjn, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/categories/world.xml",      "yj_world", cfg.yjn, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/categories/business.xml","yj_business", cfg.yjnb, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/categories/life.xml",        "yj_life", cfg.yjnb, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/categories/it.xml",            "yj_it", cfg.yjni, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/categories/science.xml",  "yj_science", cfg.yjni, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/domestic.xml","yj_domestic", cfg.yjn, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/world.xml",      "yj_world", cfg.yjn, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/business.xml","yj_business", cfg.yjnb, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/life.xml",        "yj_life", cfg.yjnb, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/it.xml",            "yj_it", cfg.yjni, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/science.xml",  "yj_science", cfg.yjni, lang.jpn, tsl.n ],
 ]
 
 yjnews2  = [
-    ["https://news.yahoo.co.jp/rss/categories/entertainment.xml","yj_entertainment", cfg.yjne, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/categories/local.xml",                "yj_local", cfg.yjnl, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/categories/sports.xml",              "yj_sports", cfg.yjns, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/entertainment.xml","yj_entertainment", cfg.yjne, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/local.xml",                "yj_local", cfg.yjnl, lang.jpn, tsl.n ],
+    # ["https://news.yahoo.co.jp/rss/categories/sports.xml",              "yj_sports", cfg.yjns, lang.jpn, tsl.n ],
 ]
 
 
@@ -249,8 +251,8 @@ ershicimi = [
 ]
 
 weixin = [
-    ["https://api.feeddd.org/feeds/6123cf6051e2511a827a370f",        "common_sense", cfg.wxsl, lang.zhs, tsl.n],    # 
-    ["https://api.feeddd.org/feeds/6127a7c0221f954f5e110a8f",          "Cicero_sea", cfg.wxsl, lang.zhs, tsl.n],    # KQ1KZbOJ， 二十
+    # ["https://api.feeddd.org/feeds/6123cf6051e2511a827a370f",        "common_sense", cfg.wxsl, lang.zhs, tsl.n],    # 
+    # ["https://api.feeddd.org/feeds/6127a7c0221f954f5e110a8f",          "Cicero_sea", cfg.wxsl, lang.zhs, tsl.n],    # KQ1KZbOJ， 二十
     # ["https://api.feeddd.org/feeds/63c2828be1190840774cd9a3",      "doctor_G_child", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://api.feeddd.org/feeds/612703b0221f954f5e10f936",               "appso", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://api.feeddd.org/feeds/612703b0221f954f5e10f936",               "appso", cfg.wxoa, lang.zhs, tsl.n],
@@ -317,7 +319,7 @@ def hourly():
             print(f"{rss[0]}\n{rss[1]}\n{e}")
     # -----------------------------------------
     # YJ News must be YJFeed()!
-    for rss in yjnews1:
+    for rss in yjnews:
         try:
             YJFeed(
                 link  =rss[0],
@@ -330,18 +332,18 @@ def hourly():
             print(f"{rss[0]}\n{rss[1]}\n{e}")
 
     # --------------------------
-def minutely():
-    for rss in yjnews2:
-        try:
-            YJFeed(
-                link  =rss[0],
-                title =rss[1],
-                config=rss[2],
-                lang  =rss[3],
-                translated =rss[4],
-            ).run()
-        except Exception as e:
-            print(f"{rss[0]}\n{rss[1]}\n{e}")
+# def minutely():
+#     for rss in yjnews2:
+#         try:
+#             YJFeed(
+#                 link  =rss[0],
+#                 title =rss[1],
+#                 config=rss[2],
+#                 lang  =rss[3],
+#                 translated =rss[4],
+#             ).run()
+#         except Exception as e:
+#             print(f"{rss[0]}\n{rss[1]}\n{e}")
 
     
 # -----------------------------------------
@@ -376,5 +378,5 @@ if __name__ == '__main__':
     # test()
 
     hourly()
-    minutely()
+    # minutely()
 

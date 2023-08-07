@@ -73,6 +73,7 @@ bbj   = "bbj"
 koshoken = "kshk"
 ktu   = "ktu"
 
+kyodo = "kyodo"
 
 # coding
 
