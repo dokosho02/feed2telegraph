@@ -375,7 +375,7 @@ def daily():
     urls = ["https://s1s1s1.com/"]
     for link in urls:
         try:
-            AVFeed(link,"S1", cfg.avf, lang.jpn).run()
+            AVFeed(link,"S1", cfg.avf, lang.jpn, tsl.n).run()
         except Exception as e:
             print(f"{link}\n{e}")
 # -----------------------------------------

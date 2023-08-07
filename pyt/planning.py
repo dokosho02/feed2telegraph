@@ -10,6 +10,7 @@ from joef2t.utils.terminal import clearTerminal
 dayTimes = [
     "01:25",
     "02:59",
+    "03:59",
     ]
 
 hourTimes = [
