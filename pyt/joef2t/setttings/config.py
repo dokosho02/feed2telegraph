@@ -74,7 +74,7 @@ koshoken = "kshk"
 ktu   = "ktu"
 
 kyodo = "kyodo"
-
+rescue= "rescue"
 # coding
 
 cgd = "cgd"

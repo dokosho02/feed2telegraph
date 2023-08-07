@@ -101,7 +101,7 @@ sputnik = [
 # -----------------------------------------
 zaobao = [
     ["https://rsshub.app/zaobao/realtime/china",    "zaobao_cn", cfg.zbcg, lang.zhs, tsl.n],
-    ["https://rsshub.app/zaobao/realtime/singapore","zaobao_sg", cfg.zbcg, lang.zhs, tsl.n],
+    # ["https://rsshub.app/zaobao/realtime/singapore","zaobao_sg", cfg.zbcg, lang.zhs, tsl.n],
 ]
 # -----------------------------------------
 bbc = [
@@ -135,6 +135,14 @@ yomiuri = [
 yjnews  = [
     ["https://news.yahoo.co.jp/rss/media/bbc/all.xml","BBC_News", cfg.bbc, lang.jpn, tsl.n ],
     ["https://news.yahoo.co.jp/rss/media/kyodonews/all.xml","kyodo_News", cfg.kyodo, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/rescuenow/all.xml","rescuenow", cfg.rescue, lang.jpn, tsl.n ],
+
+    ["https://news.yahoo.co.jp/rss/media/zdn_m/all.xml",   "zdn_m", cfg.yjni, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/impress/all.xml", "impress_watch", cfg.yjni, lang.jpn, tsl.n ],
+
+    ["https://news.yahoo.co.jp/rss/media/nksports/all.xml", "nksports", cfg.yjne, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/oric/all.xml", "oric", cfg.yjne, lang.jpn, tsl.n ],
+
     # ["https://news.yahoo.co.jp/rss/topics/top-picks.xml",  "yj_top_picks", cfg.yjt ], # delete
     # ["https://news.yahoo.co.jp/rss/categories/domestic.xml","yj_domestic", cfg.yjn, lang.jpn, tsl.n ],
     # ["https://news.yahoo.co.jp/rss/categories/world.xml",      "yj_world", cfg.yjn, lang.jpn, tsl.n ],
