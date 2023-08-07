@@ -59,8 +59,8 @@ moreTimes = [
 ]
 
 # ---------------------------------------
-for mt in minuteTimes + moreTimes:
-    schedule.every().hour.at(mt).do( work.minutely )
+# for mt in minuteTimes + moreTimes:
+#     schedule.every().hour.at(mt).do( work.minutely )
 
 for ht in hourTimes:
     schedule.every().hour.at(ht).do( work.hourly )
