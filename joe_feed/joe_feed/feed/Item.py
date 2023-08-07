@@ -50,14 +50,16 @@ class Item():
         if len(self.keyWords) >0:
             self.kw = ", ".join(self.keyWords)
         # ---------------
-        try:
-            self.write2sql()
-        except Exception as e:
-            print(f"{self.link}\n{e}")
+
+
+    def run(self):
+        self.write2sql()
+        # await self.write2Telegraph()
     # ----------------------
     def write2sql(self):
         conn = sqliteBind.create_connection(cfg.database)
         if conn is not None:
+
             articleElement = (
                 self.title,  # title
                 self.link,   # link
@@ -73,8 +75,9 @@ class Item():
                 self.feed_id
             )
 
-            terminalWord = f"""\t{TerminalColors.OKCYAN}article inserted - {self.title}{TerminalColors.ENDC}"""
             sqliteBind.insert_item(conn, cfg.article_insert_sql, articleElement)
+
+            terminalWord = f"""\t{TerminalColors.OKCYAN}article inserted - {self.title}{TerminalColors.ENDC}"""
             print(terminalWord)
 
     # #  -------------------------------------

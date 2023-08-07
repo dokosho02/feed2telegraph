@@ -4,7 +4,9 @@ from datetime import datetime
 from tqdm import tqdm
 from pprint import pprint
 
-# import telegram_send as ts
+import time
+from concurrent.futures import ThreadPoolExecutor
+
 
 from joe_feed.feed.Item import Item
 from joe_feed.utils.core.file import createFile, readText
@@ -167,10 +169,12 @@ class Feed():
             print(f"{TerminalColors.FAIL}no last backup file - {e}{TerminalColors.ENDC}")
     # -------------------------------
     def processSingleItem(self, i):
+
+        print(f"processing item {i+1}/{len(self.newItems)}")
         # contents string
         entry = self.newItems[i]
-        entryTitle, entryContent, entryLink, entryAuthors, entryTags = self.getItemContents(entry)
-
+        res = self.getItemContents(entry)
+        entryTitle, entryContent, entryLink, entryAuthors, entryTags = res
         # time
         dt = ""
         try:
@@ -178,39 +182,56 @@ class Feed():
         except Exception as e:
             print(f"{e}\nNo time label")
         
+        item = Item(
+            title     = entryTitle,
+            chapterNo = str(i+1),
+            time      = dt, # time,
+            contents  = entryContent,
+            link      = entryLink,
+            authors   = entryAuthors,
+            keyWords  = entryTags,
+            feedName  = self.title,
+            feedLink  = self.link,
+            lang      = self.lang,
+            translated= self.translated,
+            feed_id   = self.id,
+            conf      = self.conf,
+        ).run()
+
+        print(f"complete item {i+1}/{len(self.newItems)}")
+
         # entryContent = removeAttrExceptHrefSrc(entryContent)
         # entryContent = self.refineContents(entryContent)
 
-        return (entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt)
+        # return (entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt)
     # -------------------------------
     def processNewItems(self):
         if (len(self.newItems) > 0):
+            start_time = time.time()
+
             self.newItems.reverse()
             self.get_id()
             print(f"feed id = {self.id}")
 
-            for i in tqdm( range(len(self.newItems))):
-                entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt = self.processSingleItem(i)
-                
-                print(f"before item - {self.conf}")
+            tasks = list(range(len(self.newItems)))
+            with ThreadPoolExecutor() as executor:
+                executor.map(self.processSingleItem, tasks)
 
-                item = Item(
-                title     = entryTitle,
-                chapterNo = str(i+1),
-                time      = dt, # time,
-                contents  = entryContent,
-                link      = entryLink,
-                authors   = entryAuthors,
-                keyWords  = entryTags,
-                feedName  = self.title,
-                feedLink  = self.link,
-                lang      = self.lang,
-                translated= self.translated,
-                feed_id   = self.id,
-                conf      = self.conf,
-                )
+            # tasks = []
+            # for i in tqdm( range(len(self.newItems))):
+            # for i in range(len(self.newItems)):
+            #     tasks.append(self.processSingleItem(i))
+
+                # entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt = self.processSingleItem(i)
+                
+                # print(f"before item - {self.conf}")
+            # await asyncio.gather(*tasks)
+            end_time = time.time()
+
             self.write2LastFiles()
             print(f"complete - {self.updateInfo}")
+            print(f"Total time taken: {(end_time - start_time) * 1000:.2f} ms")
+
     # -------------------------------
     def getItemContents(self, entry):
         entryTitle = entry["title"]
@@ -239,7 +260,7 @@ class Feed():
             else:
                 print(f"""\t{TerminalColors.OKCYAN}summary{TerminalColors.ENDC}""")
         
-        return (entryTitle, entryContent, entryLink, entryAuthors, entryTags)
+        return [entryTitle, entryContent, entryLink, entryAuthors, entryTags]
 
     # -------------------------------
     def refineContents(self, cont):    # for basics
@@ -263,7 +284,7 @@ class Feed():
             sqliteBind.create_table(conn, cfg.sql_create_articles_table)
         else:
             print("Error! cannot create the database connection.")
-
+# --------------------------------------------------------------------
     def get_id(self):
         conn = sqliteBind.create_connection(cfg.database)
         if conn is not None:
