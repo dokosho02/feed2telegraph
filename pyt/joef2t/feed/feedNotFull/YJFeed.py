@@ -61,7 +61,13 @@ class YJFeed(NotFullFeed):
         # multi-page
         pages = 1
         try:
-            pn = soup.select("span.pagination_number_text")[0].text.replace("ページ" , "")
+            # pn = soup.select("span.pagination_number_text")[0].text.replace("ページ" , "")
+            pn = 1
+            pns = soup.select("span")
+            for p in pns:
+                t = p.text.strip()
+                if t.endswith("ページ") and t[0].isdigit():
+                    pn = t[0]
             pages = int(pn)
         except:
             pass

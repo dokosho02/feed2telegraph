@@ -85,7 +85,7 @@ langLearn = [
 ]
 
 bbj = [
-    ["https://www.billboard-japan.com/d_news/doc.xml", "billboard_ja", cfg.bbj, lang.jpn, tsl.n],
+    # ["https://www.billboard-japan.com/d_news/doc.xml", "billboard_ja", cfg.bbj, lang.jpn, tsl.n],
 ]
 # -----------------------------------------
 # -----------------------------------------
