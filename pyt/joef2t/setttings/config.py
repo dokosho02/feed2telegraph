@@ -64,7 +64,7 @@ yjn   = "yjn"
 yjnb  = "yjnb"    # business and life
 yjni  = "yjni"    # it and science
 yjne  = "yjne"
-yjnl  = "yjnl"
+# yjnl  = "yjnl"
 yjns  = "yjns"
 
 yjt   = "yjt"
@@ -73,6 +73,7 @@ bbj   = "bbj"
 koshoken = "kshk"
 ktu   = "ktu"
 
+bfj = "bfj"
 kyodo = "kyodo"
 rescue= "rescue"
 # coding

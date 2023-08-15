@@ -156,6 +156,7 @@ yjnews  = [
     ["https://news.yahoo.co.jp/rss/media/bunshun/all.xml", "bunshun", cfg.yjne, lang.jpn, tsl.n ],
     ["https://news.yahoo.co.jp/rss/media/exp/all.xml", "bbj_exp", cfg.yjne, lang.jpn, tsl.n ],
 
+    ["https://news.yahoo.co.jp/rss/media/bfj/all.xml", "bfj", cfg.bfj, lang.jpn, tsl.n ],
 
 
     # ["https://news.yahoo.co.jp/rss/topics/top-picks.xml",  "yj_top_picks", cfg.yjt ], # delete
