@@ -68,7 +68,7 @@ yjne  = "yjne"
 yjns  = "yjns"
 
 yjt   = "yjt"
-bbj   = "bbj"
+gdb   = "gdb"
 
 koshoken = "kshk"
 ktu   = "ktu"

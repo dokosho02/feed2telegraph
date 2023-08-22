@@ -144,7 +144,8 @@ yjnews  = [
     ["https://news.yahoo.co.jp/rss/media/krjapan/all.xml", "36Kr_ja", cfg.yjni, lang.jpn, tsl.n ],
 
     # world
-    ["https://news.yahoo.co.jp/rss/media/cnn/all.xml",      "cnn_jpn", cfg.yjn, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/cnn/all.xml",      "cnn_jpn",   cfg.yjn, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/gendaibiz/all.xml","gendaibiz", cfg.gdb, lang.jpn, tsl.n ],
 
     # life
     ["https://news.yahoo.co.jp/rss/media/it_nlab/all.xml",     "nlab", cfg.yjnb, lang.jpn, tsl.n ],
