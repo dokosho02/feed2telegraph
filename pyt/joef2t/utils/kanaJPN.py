@@ -20,13 +20,29 @@ def kanaConvert(str2process):
             print(f"{orig}: {hira}")
             value.append(f"{orig}: {hira}\n")
     
-    res = [*set(value)]
+    res = remove_duplicates_ordered(value)
 
     strFinal = ""
     for vl in res:
         strFinal +=vl
 
     return strFinal
+
+def remove_duplicates_ordered(input_list):
+    seen = set()
+    result = []
+    
+    for item in input_list:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    
+    return result
+
+# original_list = [1, 2, 2, 3, 4, 4, 5, 1, 6]
+# unique_list = remove_duplicates_ordered(original_list)
+# print(unique_list)  # Output: [1, 2, 3, 4, 5, 6]
+
 
 
 """
