@@ -370,14 +370,30 @@ def hourly():
 #         except Exception as e:
 #             print(f"{rss[0]}\n{rss[1]}\n{e}")
 
-    
+jav = [
+    ["https://s1s1s1.com/",              "S1-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://ideapocket.com/",  "ideapocket-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://moodyz.com/",          "moodyz-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://www.honnaka.jp/",     "honnaka-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://www.kawaiikawaii.jp/", "kawaii-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://kirakira-av.com/",   "kirakira-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://www.attackers.net/","attackers-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://www.av-e-body.com/",   "e-body-av", cfg.avf, lang.jpn, tsl.n ],
+    ["https://www.madonna-av.com/", "madonna-av", cfg.avf, lang.jpn, tsl.n ],
+]
+
 # -----------------------------------------
 
 def daily():
-    urls = ["https://s1s1s1.com/"]
-    for link in urls:
+    for rss in jav:
         try:
-            AVFeed(link,"S1", cfg.avf, lang.jpn, tsl.n).run()
+            AVFeed(
+                link  =rss[0],
+                title =rss[1],
+                config=rss[2],
+                lang  =rss[3],
+                translated =rss[4],
+            ).run()
         except Exception as e:
             print(f"{link}\n{e}")
 # -----------------------------------------
