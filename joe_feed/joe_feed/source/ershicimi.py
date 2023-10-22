@@ -22,7 +22,7 @@ selected_sim = [
 # ------------------------------------------------
 daily_sim = [
     ["2jr1rwOY",        "appso" ],
-    ["13oVxvQl",        "szdays"],
+    # ["13oVxvQl",        "szdays"],
     ["Rjl0r2jD",        "douban"],
 
 ]

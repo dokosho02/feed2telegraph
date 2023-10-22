@@ -49,12 +49,12 @@ class Item():
 
         print(f"""\t{self.chapterNo}\t{TerminalColors.OKCYAN}{self.title}{TerminalColors.ENDC}\n\t{self.link}\n\t{self.time}""")
 
-        self.html4Telegraph = f"""
-        <p><a href="{self.link}">Web</a></p>\n
-        <h1>{self.title}</h1>\n
-        <p><br/></p>\n
-        <p>{datetime.datetime.utcfromtimestamp(self.time)}</p>\n
-        """
+        # self.html4Telegraph = f"""
+        # <p><a href="{self.link}">Web</a></p>\n
+        # <h1>{self.title}</h1>\n
+        # <p><br/></p>\n
+        # <p>{datetime.datetime.utcfromtimestamp(self.time)}</p>\n
+        # """
 
 
         if len(self.authors) >0:
@@ -65,27 +65,26 @@ class Item():
         # ---------------
 
     def run(self):
-        self.send2telegraph()
+        # self.send2telegraph()
         self.write2sql()
     # ---------------
-    def send2telegraph(self):
-        self.html4Telegraph += f"""{self.contents}\n"""
-        self.resUrl = asyncio.run(
-                write2Telegraph(
-                    title=f"{self.title} - {self.feedName}",
-                    content = self.html4Telegraph,
-                    author = self.au,
-                )
-            )
-        sendWord = f"{self.resUrl}\n[Web]({self.link})"
-        send2chat(self.conf, sendWord)
+    # def send2telegraph(self):
+    #     self.html4Telegraph += f"""{self.contents}\n"""
+    #     self.resUrl = asyncio.run(
+    #             write2Telegraph(
+    #                 title=f"{self.title} - {self.feedName}",
+    #                 content = self.html4Telegraph,
+    #                 author = self.au,
+    #             )
+    #         )
+    #     sendWord = f"{self.resUrl}\n[Web]({self.link})"
+    #     send2chat(self.conf, sendWord)
     # ----------------------
     def write2sql(self):
         conn = sqliteBind.create_connection(cfg.database)
         if conn is not None:
 
             articleElement = (
-                # self.time,
                 self.title,  # title
                 self.link,   # link
                 self.time,
@@ -94,7 +93,7 @@ class Item():
                 self.lang,    # lang
                 self.kw,      # tags
                 "",           # type
-                self.resUrl,  # iv link
+                "",#self.resUrl,  # iv link
                 0,            # read
                 0,            # starred
                 self.feed_id

@@ -222,12 +222,12 @@ class Feed():
             self.get_id()
             # print(f"feed id = {self.id}")
 
-            # tasks = list(range(len(self.newItems)))
-            # with ThreadPoolExecutor() as executor:
-            #     executor.map(self.processSingleItem, tasks)
+            tasks = list(range(len(self.newItems)))
+            with ThreadPoolExecutor() as executor:
+                executor.map(self.processSingleItem, tasks)
 
-            for i in tqdm( range(len(self.newItems))):
-                self.processSingleItem(i)
+            # for i in tqdm( range(len(self.newItems))):
+                # self.processSingleItem(i)
                 # entryTitle, entryContent, entryLink, entryAuthors, entryTags, dt = self.processSingleItem(i)
                 
                 # print(f"before item - {self.conf}")

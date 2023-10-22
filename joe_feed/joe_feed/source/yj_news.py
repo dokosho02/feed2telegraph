@@ -41,12 +41,16 @@ bbc_sim = [
     ["bbc", "BBC_News"],    # BBC_News
 ]
 
+kyodo_sim = [
+    ["kyodonews", "Kyodo_News"],    # kyodonews
+]
 # 
 bbc   = list( map(lambda i: [f"{head}{i[0]}{tail}", f"yj_{i[1]}", ch.bbc, lang.jpn, tsl.n], bbc_sim) )
 
+kyodo = list( map(lambda i: [f"{head}{i[0]}{tail}", f"yj_{i[1]}", ch.kyodo, lang.jpn, tsl.n], kyodo_sim) )
 
 # ------------------------------------------------
-yj_rss = bbc # + 
+yj_rss = bbc + kyodo
 # ------------------------------------------------
 def main():
     [print(rl) for rl in yjRSS]
