@@ -28,7 +28,7 @@ infoTech = [
 
 newsZhs = [
     ["https://rss.huxiu.com/",               "huxiu",          cfg.huxiu, lang.zhs, tsl.n],
-    ["https://rsshub.app/thepaper/featured", "paper_featured", cfg.tpf,   lang.zhs, tsl.n],
+    # ["https://rsshub.app/thepaper/featured", "paper_featured", cfg.tpf,   lang.zhs, tsl.n],
     # ["https://rsshub.app/dapenti/tugua",      "penti_tugua",    cfg.daily, lang.zhs, tsl.n],
     # ["https://rsshub.app/dapenti/subject/184","penti_fushihui", cfg.daily, lang.zhs, tsl.n],
 ]
