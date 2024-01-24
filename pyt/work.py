@@ -14,8 +14,8 @@ from joef2t.feed.scrape.av.AVFeed import AVFeed
 
 # -----------------------------------------
 infoTech = [
-    ["https://rsshub.app/sspai/index",             "sspai", cfg.daily, lang.zhs, tsl.n],
-    ["https://rsshub.app/geekpark/breakingnews","geekPark", cfg.daily, lang.zhs, tsl.n],
+    # ["https://rsshub.app/sspai/index",             "sspai", cfg.daily, lang.zhs, tsl.n],
+    # ["https://rsshub.app/geekpark/breakingnews","geekPark", cfg.daily, lang.zhs, tsl.n],
     # ["https://feeds.feedburner.com/bookfere",   "bookfere", cfg.daily, lang.zhs, tsl.n],
     # ["https://www.techradar.com/rss",            "techRadar", cfg.tcr, lang.eng, tsl.y],
     # ["https://www.xda-developers.com/feed/",           "xda", cfg.xda, lang.eng, tsl.n],
@@ -65,10 +65,10 @@ economist = [
     ["https://rsshub.app/economist/the-americas",          "economist_the-americas",          cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/middle-east-and-africa","economist_middle-east-and-africa",cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/asia",                  "economist_asia",                  cfg.ecn, lang.eng, tsl.n],
-    ["https://rsshub.app/economist/china",                 "economist_china",                 cfg.ecn, lang.eng, tsl.y],
+    # ["https://rsshub.app/economist/china",                 "economist_china",                 cfg.ecn, lang.eng, tsl.y],
     ["https://rsshub.app/economist/international",         "economist_international",         cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/business",              "economist_business",              cfg.ecn, lang.eng, tsl.n],
-    ["https://rsshub.app/economist/finance-and-economics", "economist_finance-and-economics", cfg.ecnfe, lang.eng, tsl.y],
+    # ["https://rsshub.app/economist/finance-and-economics", "economist_finance-and-economics", cfg.ecnfe, lang.eng, tsl.y],
     ["https://rsshub.app/economist/science-and-technology","economist_science-and-technology",cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/books-and-arts",        "economist_books-and-arts",        cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/obituary",              "economist_obituary",              cfg.ecn, lang.eng, tsl.n],
@@ -113,7 +113,7 @@ nyt = [
 ]
 # -----------------------------------------
 reu = [
-    ["https://rsshub.app/reuters/world/china",        "reuters_china",        cfg.reu_cn, lang.eng, tsl.y],
+    # ["https://rsshub.app/reuters/world/china",        "reuters_china",        cfg.reu_cn, lang.eng, tsl.y],
     ["https://rsshub.app/reuters/world/asia-pacific", "reuters_asia_pacific", cfg.reu_cn, lang.eng, tsl.y],
 ]
 
