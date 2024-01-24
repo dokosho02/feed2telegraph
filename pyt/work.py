@@ -54,7 +54,7 @@ kbs = [
 ]
 
 economist = [
-    ["https://rsshub.app/economist/the-world-this-week",   "economist_world",                 cfg.ecn, lang.eng, tsl.n],
+    # ["https://rsshub.app/economist/the-world-this-week",   "economist_world",                 cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/letters",               "economist_letters",               cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/leaders",               "economist_leaders",               cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/briefing",              "economist_briefing",              cfg.ecn, lang.eng, tsl.n],
@@ -90,7 +90,7 @@ bbj = [
 # -----------------------------------------
 # -----------------------------------------
 politics = [
-    ["https://rsshub.app/rfa", "rfa", cfg.rfa, lang.eng, tsl.n],
+    # ["https://rsshub.app/rfa", "rfa", cfg.rfa, lang.eng, tsl.n],
 ]
     # -----------------------------------------
 sputnik = [
@@ -100,12 +100,12 @@ sputnik = [
 
 # -----------------------------------------
 zaobao = [
-    ["https://rsshub.app/zaobao/realtime/china",    "zaobao_cn", cfg.zbcg, lang.zhs, tsl.n],
+    # ["https://rsshub.app/zaobao/realtime/china",    "zaobao_cn", cfg.zbcg, lang.zhs, tsl.n],
     # ["https://rsshub.app/zaobao/realtime/singapore","zaobao_sg", cfg.zbcg, lang.zhs, tsl.n],
 ]
 # -----------------------------------------
 bbc = [
-    ["https://rsshub.app/bbc/world-asia", "bbc_asia", cfg.bbc, lang.eng, tsl.y],
+    # ["https://rsshub.app/bbc/world-asia", "bbc_asia", cfg.bbc, lang.eng, tsl.y],
 ]
 # -----------------------------------------
 nyt = [
@@ -118,8 +118,8 @@ reu = [
 ]
 
 cdt = [
-    ["https://chinadigitaltimes.net/chinese/feed/","cdt_zhs", cfg.cdt, lang.zhs, tsl.n ],
-    ["https://chinadigitaltimes.net/feed/",        "cdt_eng", cfg.cdt, lang.eng, tsl.y ],
+    # ["https://chinadigitaltimes.net/chinese/feed/","cdt_zhs", cfg.cdt, lang.zhs, tsl.n ],
+    # ["https://chinadigitaltimes.net/feed/",        "cdt_eng", cfg.cdt, lang.eng, tsl.y ],
 ]
 
 yomiuri = [
@@ -181,14 +181,14 @@ university = [
 ]
 
 codings = [
-    ["https://rustcc.cn/rss",               "Rust_CC",        cfg.cgd, lang.zhs, tsl.n ],
+    # ["https://rustcc.cn/rss",               "Rust_CC",        cfg.cgd, lang.zhs, tsl.n ],
     # ["http://www.oschina.net/news/rss",     "OSCHINA社区_新闻",cfg.cgd, lang.zhs ],
     # ["http://www.oschina.net/project/rss",  "OSCHINA社区_软件",cfg.cgd, lang.zhs ],
-    ["https://rsshub.app/yuque/doc/75258",  "Egg-Node-js",    cfg.cgd, lang.zhs, tsl.n ],
-    ["https://blog.kotlin-academy.com/feed","Kotlin_Academy", cfg.cgd, lang.eng, tsl.n ],
-    ["https://www.raywenderlich.com/android/feed/","Kodeco",  cfg.cgd, lang.eng, tsl.n ],
-    ["https://feeds.feedblitz.com/baeldung/kotlin","BaeldungKotlin",  cfg.cgd, lang.eng, tsl.n ],
-    ["https://rsshub.app/wechat/ershicimi/RjlPAljD", "CoderAlliance", cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/yuque/doc/75258",  "Egg-Node-js",    cfg.cgd, lang.zhs, tsl.n ],
+    # ["https://blog.kotlin-academy.com/feed","Kotlin_Academy", cfg.cgd, lang.eng, tsl.n ],
+    # ["https://www.raywenderlich.com/android/feed/","Kodeco",  cfg.cgd, lang.eng, tsl.n ],
+    # ["https://feeds.feedblitz.com/baeldung/kotlin","BaeldungKotlin",  cfg.cgd, lang.eng, tsl.n ],
+    # ["https://rsshub.app/wechat/ershicimi/RjlPAljD", "CoderAlliance", cfg.wxoa, lang.zhs, tsl.n],
 ]
 
 weibo = [
@@ -198,31 +198,31 @@ weibo = [
 
 ershicimi = [
     # selected
-    ["https://rsshub.app/wechat/ershicimi/N3WgvL3M",       "thatNG", cfg.wxsl, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/rQA9kZQZ", "FengXueRong",  cfg.wxsl, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/XQJ4VnOb", "briefHistory", cfg.wxsl, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/dOVgBkje", "polar_day_stu",cfg.wxsl, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/619db3b5486e3727fb037fa5"
-    ["https://rsshub.app/wechat/ershicimi/wDOqGBQ4", "old_driver_business", cfg.wxsl, lang.zhs, tsl.n], # "https://api.feeddd.org/feeds/61f3d472dca58a380c4fc131"
-    ["https://rsshub.app/wechat/ershicimi/EOd8GKO4",        "mylifeano",    cfg.wxsl, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/LRjlqAQD",        "diqiuzhishiju",cfg.wxsl, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/N3WgvL3M",       "thatNG", cfg.wxsl, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/rQA9kZQZ", "FengXueRong",  cfg.wxsl, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/XQJ4VnOb", "briefHistory", cfg.wxsl, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/dOVgBkje", "polar_day_stu",cfg.wxsl, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/619db3b5486e3727fb037fa5"
+    # ["https://rsshub.app/wechat/ershicimi/wDOqGBQ4", "old_driver_business", cfg.wxsl, lang.zhs, tsl.n], # "https://api.feeddd.org/feeds/61f3d472dca58a380c4fc131"
+    # ["https://rsshub.app/wechat/ershicimi/EOd8GKO4",        "mylifeano",    cfg.wxsl, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/LRjlqAQD",        "diqiuzhishiju",cfg.wxsl, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/M3ekLwjl",        "Doctor_X",     cfg.wxsl, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/613381fa1269c358aa0eafc9"
-    ["https://rsshub.app/wechat/ershicimi/mQ4RDeO4",        "guokr42",      cfg.wxsl, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/mQ4RDeO4",        "guokr42",      cfg.wxsl, lang.zhs, tsl.n],
     # code
-    ["https://rsshub.app/wechat/ershicimi/NjpEdVQB",      "osc_ops",  cfg.cgd,  lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/61514f7e1269c358aa13c8e5"
+    # ["https://rsshub.app/wechat/ershicimi/NjpEdVQB",      "osc_ops",  cfg.cgd,  lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/61514f7e1269c358aa13c8e5"
     # ["https://rsshub.app/wechat/ershicimi/dOVD2m7Q",      "coderLib", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/nqQBbQz0", "pyt_community", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/vdOVar3e",      "coderHui", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/PQDwYGNj",    "readPoems",  cfg.wxoa, lang.zhs, tsl.n],
 
     # daily
-    ["https://rsshub.app/wechat/ershicimi/2jr1rwOY",        "appso",  cfg.daily, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/612703b0221f954f5e10f936"
-    ["https://rsshub.app/wechat/ershicimi/13oVxvQl",        "szdays", cfg.daily, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/2jr1rwOY",        "appso",  cfg.daily, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/612703b0221f954f5e10f936"
+    # ["https://rsshub.app/wechat/ershicimi/13oVxvQl",        "szdays", cfg.daily, lang.zhs, tsl.n],
     
     # university
-    ["https://rsshub.app/wechat/ershicimi/dOVlr5Qe",        "whu", cfg.univ, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/23nX61yj",       "hust", cfg.univ, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/NjYk0Rb3",      "hkust", cfg.univ, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/bO9lBdp3",       "xjtu", cfg.univ, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/dOVlr5Qe",        "whu", cfg.univ, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/23nX61yj",       "hust", cfg.univ, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/NjYk0Rb3",      "hkust", cfg.univ, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/bO9lBdp3",       "xjtu", cfg.univ, lang.zhs, tsl.n],
 
     # humor
     # ["https://rsshub.app/wechat/ershicimi/M3e0nnQl",        "meipinbaike",  cfg.wxhm, lang.zhs, tsl.n],
@@ -238,12 +238,12 @@ ershicimi = [
     # ["https://rsshub.app/wechat/ershicimi/emQ4AY34",        "youshucc", cfg.wxoa, lang.zhs, tsl.n],
     
     # HIMMR
-    ["https://rsshub.app/wechat/ershicimi/4QkVznja",       "HowImetMrRight", cfg.HIMMR, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/M3eZ4LlO",        "HIMMRshanghai", cfg.HIMMR, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/x30PngL3",          "HIMMRpeking", cfg.HIMMR, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/838JB2Mj",        "HIMMRhangchow", cfg.HIMMR, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/dOVoKa8j",          "HIMMRcanton", cfg.HIMMR, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/N3N7KWvO",         "HIMMRnanking", cfg.HIMMR, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/4QkVznja",       "HowImetMrRight", cfg.HIMMR, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/M3eZ4LlO",        "HIMMRshanghai", cfg.HIMMR, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/x30PngL3",          "HIMMRpeking", cfg.HIMMR, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/838JB2Mj",        "HIMMRhangchow", cfg.HIMMR, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/dOVoKa8j",          "HIMMRcanton", cfg.HIMMR, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/N3N7KWvO",         "HIMMRnanking", cfg.HIMMR, lang.zhs, tsl.n],
     
     # parenting
     # ["https://rsshub.app/wechat/ershicimi/1rQAAEQZ",        "niangao-mama", cfg.prnt, lang.zhs, tsl.n],
@@ -255,15 +255,15 @@ ershicimi = [
     # ["https://rsshub.app/wechat/ershicimi/dOVVerOe",        "imingbailema", cfg.prnt, lang.zhs, tsl.n],  #https://api.feeddd.org/feeds/63c2828be1190840774cd9a3
     
     # general
-    ["https://rsshub.app/wechat/ershicimi/dOVo5X0j",        "kekesil",      cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/9aj6dN34",        "QbitAI",       cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/XjZqoROw",        "vistaweek",    cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/vKQ1PKjJ",        "wallstreetcn", cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/23nnGy3x",        "chaintruth",   cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/rQAlE6jZ",       "shenrancaijing",cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/Rjl0r2jD",        "douban",       cfg.wxoa, lang.zhs, tsl.n],
-    ["https://rsshub.app/wechat/ershicimi/13ox11Ol",        "theLivings",   cfg.wxoa, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/615d9e801269c358aa1632b9"
-    ["https://rsshub.app/wechat/ershicimi/nXQJRNQb",        "renwumag1980", cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/dOVo5X0j",        "kekesil",      cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/9aj6dN34",        "QbitAI",       cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/XjZqoROw",        "vistaweek",    cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/vKQ1PKjJ",        "wallstreetcn", cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/23nnGy3x",        "chaintruth",   cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/rQAlE6jZ",       "shenrancaijing",cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/Rjl0r2jD",        "douban",       cfg.wxoa, lang.zhs, tsl.n],
+    # ["https://rsshub.app/wechat/ershicimi/13ox11Ol",        "theLivings",   cfg.wxoa, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/615d9e801269c358aa1632b9"
+    # ["https://rsshub.app/wechat/ershicimi/nXQJRNQb",        "renwuma  g1980", cfg.wxoa, lang.zhs, tsl.n],
      
     # ["https://rsshub.app/wechat/ershicimi/pQaDarjJ",        "xjtu", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/pQaDarjJ",        "xjtu", cfg.wxoa, lang.zhs, tsl.n],
@@ -291,7 +291,7 @@ weixin = [
 # -----------------------------------------
 def hourly():
     # YJ News must be YJFeed(), not Feed()!
-    links = newsZhs + economist + politics + zaobao + infoTech + langLearn + wsj + kbs + sputnik + bbc + nyt + reu + cdt + journalRSS + university + codings + weibo + yomiuri
+    links = newsZhs + economist + politics + zaobao + infoTech + langLearn + kbs + sputnik + bbc + nyt + reu + cdt + journalRSS + university + codings + weibo + yomiuri
 
     # -----------------------------------------
     for rss in links:
