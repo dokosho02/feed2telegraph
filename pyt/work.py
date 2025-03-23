@@ -1,5 +1,5 @@
 from joef2t.feed.Feed import Feed
-from joef2t.feed.feedNotFull.YJFeed import YJFeed
+# from joef2t.feed.feedNotFull.YJFeed import YJFeed
 from joef2t.feed.feedNotFull.WXOAFeed import WXOAFeed
 from joef2t.feed.feedNotFull.BillBoardJa import BillBoardJa
 
@@ -19,15 +19,15 @@ infoTech = [
     # ["https://feeds.feedburner.com/bookfere",   "bookfere", cfg.daily, lang.zhs, tsl.n],
     # ["https://www.techradar.com/rss",            "techRadar", cfg.tcr, lang.eng, tsl.y],
     # ["https://www.xda-developers.com/feed/",           "xda", cfg.xda, lang.eng, tsl.n],
-    ["https://rsshub.app/zhihu/daily",         "zhihu_daily", cfg.zhd, lang.zhs, tsl.n],
-    ["https://www.ithome.com/rss/",                 "ithome", cfg.ith, lang.zhs, tsl.n],
+    # ["https://rsshub.app/zhihu/daily",         "zhihu_daily", cfg.zhd, lang.zhs, tsl.n],
+    # ["https://www.ithome.com/rss/",                 "ithome", cfg.ith, lang.zhs, tsl.n],
     # ["https://www.chongdiantou.com/feed",          "charger", cfg.chg, lang.zhs],
-    
+
 ]
     # -----------------------------------------
 
 newsZhs = [
-    ["https://rss.huxiu.com/",               "huxiu",          cfg.huxiu, lang.zhs, tsl.n],
+    # ["https://rss.huxiu.com/",               "huxiu",          cfg.huxiu, lang.zhs, tsl.n],
     # ["https://rsshub.app/thepaper/featured", "paper_featured", cfg.tpf,   lang.zhs, tsl.n],
     # ["https://rsshub.app/dapenti/tugua",      "penti_tugua",    cfg.daily, lang.zhs, tsl.n],
     # ["https://rsshub.app/dapenti/subject/184","penti_fushihui", cfg.daily, lang.zhs, tsl.n],
@@ -59,17 +59,17 @@ economist = [
     ["https://rsshub.app/economist/leaders",               "economist_leaders",               cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/briefing",              "economist_briefing",              cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/special-report",        "economist_special-report",        cfg.ecn, lang.eng, tsl.n],
-    ["https://rsshub.app/economist/britain",               "economist_britain",               cfg.ecn, lang.eng, tsl.n],
-    ["https://rsshub.app/economist/europe",                "economist_europe",                cfg.ecn, lang.eng, tsl.n],
-    ["https://rsshub.app/economist/united-states",         "economist_united-states",         cfg.ecn, lang.eng, tsl.n],
+    # ["https://rsshub.app/economist/britain",               "economist_britain",               cfg.ecn, lang.eng, tsl.n],
+    # ["https://rsshub.app/economist/europe",                "economist_europe",                cfg.ecn, lang.eng, tsl.n],
+    # ["https://rsshub.app/economist/united-states",         "economist_united-states",         cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/the-americas",          "economist_the-americas",          cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/middle-east-and-africa","economist_middle-east-and-africa",cfg.ecn, lang.eng, tsl.n],
-    ["https://rsshub.app/economist/asia",                  "economist_asia",                  cfg.ecn, lang.eng, tsl.n],
+    # ["https://rsshub.app/economist/asia",                  "economist_asia",                  cfg.ecn, lang.eng, tsl.n],
     # ["https://rsshub.app/economist/china",                 "economist_china",                 cfg.ecn, lang.eng, tsl.y],
-    ["https://rsshub.app/economist/international",         "economist_international",         cfg.ecn, lang.eng, tsl.n],
+    # ["https://rsshub.app/economist/international",         "economist_international",         cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/business",              "economist_business",              cfg.ecn, lang.eng, tsl.n],
     # ["https://rsshub.app/economist/finance-and-economics", "economist_finance-and-economics", cfg.ecnfe, lang.eng, tsl.y],
-    ["https://rsshub.app/economist/science-and-technology","economist_science-and-technology",cfg.ecn, lang.eng, tsl.n],
+    # ["https://rsshub.app/economist/science-and-technology","economist_science-and-technology",cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/books-and-arts",        "economist_books-and-arts",        cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/obituary",              "economist_obituary",              cfg.ecn, lang.eng, tsl.n],
     ["https://rsshub.app/economist/graphic-detail",        "economist_graphic-detail",        cfg.ecn, lang.eng, tsl.n],
@@ -94,7 +94,7 @@ politics = [
 ]
     # -----------------------------------------
 sputnik = [
-    ["https://rsshub.app/sputniknews/world/japanese", "sputnik_jpn", cfg.sputnik, lang.jpn, tsl.n],
+    ["https://rsshub.app/sputniknews/world/japanese", "sputnik_jpn", cfg.sputnik, lang.jpn, tsl.y],
     ["https://rsshub.app/sputniknews/world/english",  "sputnik_eng", cfg.sputnik, lang.eng, tsl.y],
 ]
 
@@ -123,41 +123,41 @@ cdt = [
 ]
 
 yomiuri = [
-    ["https://rsshub.app/yomiuri/national","yomiuri_national", cfg.yomi_n, lang.jpn, tsl.n ],
-    ["https://rsshub.app/yomiuri/world",   "yomiuri_world",    cfg.yomi_w, lang.jpn, tsl.n ],
-    ["https://rsshub.app/yomiuri/local",   "yomiuri_local",    cfg.yomi_l, lang.jpn, tsl.n ],
-    ["https://rsshub.app/yomiuri/economy", "yomiuri_economy",  cfg.yomi_e, lang.jpn, tsl.n ],
+    ["https://rsshub.app/yomiuri/national","yomiuri_national", cfg.yomi_n, lang.jpn, tsl.y ],
+    ["https://rsshub.app/yomiuri/world",   "yomiuri_world",    cfg.yomi_w, lang.jpn, tsl.y ],
+    ["https://rsshub.app/yomiuri/local",   "yomiuri_local",    cfg.yomi_l, lang.jpn, tsl.y ],
+    ["https://rsshub.app/yomiuri/economy", "yomiuri_economy",  cfg.yomi_e, lang.jpn, tsl.y ],
 
 ]
 
 # -----------------------------------------
 
 yjnews  = [
-    ["https://news.yahoo.co.jp/rss/media/bbc/all.xml","BBC_News", cfg.bbc, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/kyodonews/all.xml","kyodo_News", cfg.kyodo, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/rescuenow/all.xml","rescuenow", cfg.rescue, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/tenki/all.xml","tenki", cfg.rescue, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/bbc/all.xml","BBC_News", cfg.bbc, lang.jpn, tsl.y ],
+    ["https://news.yahoo.co.jp/rss/media/kyodonews/all.xml","kyodo_News", cfg.kyodo, lang.jpn, tsl.y ],
+    # ["https://news.yahoo.co.jp/rss/media/rescuenow/all.xml","rescuenow", cfg.rescue, lang.jpn, tsl.y ],
+    ["https://news.yahoo.co.jp/rss/media/tenki/all.xml","tenki", cfg.rescue, lang.jpn, tsl.y ],
 
     # it
-    ["https://news.yahoo.co.jp/rss/media/zdn_m/all.xml",   "zdn_m", cfg.yjni, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/impress/all.xml", "impress_watch", cfg.yjni, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/krjapan/all.xml", "36Kr_ja", cfg.yjni, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/zdn_m/all.xml",   "zdn_m", cfg.yjni, lang.jpn, tsl.y ],
+    ["https://news.yahoo.co.jp/rss/media/impress/all.xml", "impress_watch", cfg.yjni, lang.jpn, tsl.y ],
+    ["https://news.yahoo.co.jp/rss/media/krjapan/all.xml", "36Kr_ja", cfg.yjni, lang.jpn, tsl.y ],
 
     # world
-    ["https://news.yahoo.co.jp/rss/media/cnn/all.xml",      "cnn_jpn",   cfg.yjn, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/gendaibiz/all.xml","gendaibiz", cfg.gdb, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/cnn/all.xml",      "cnn_jpn",   cfg.yjn, lang.jpn, tsl.y ],
+    ["https://news.yahoo.co.jp/rss/media/gendaibiz/all.xml","gendaibiz", cfg.gdb, lang.jpn, tsl.y ],
 
     # life
-    ["https://news.yahoo.co.jp/rss/media/it_nlab/all.xml",     "nlab", cfg.yjnb, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/it_nlab/all.xml",     "nlab", cfg.yjnb, lang.jpn, tsl.y ],
 
 
     # entertainment
     # ["https://news.yahoo.co.jp/rss/media/nksports/all.xml", "nksports", cfg.yjne, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/oric/all.xml", "oric", cfg.yjne, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/bunshun/all.xml", "bunshun", cfg.yjne, lang.jpn, tsl.n ],
-    ["https://news.yahoo.co.jp/rss/media/exp/all.xml", "bbj_exp", cfg.yjne, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/oric/all.xml", "oric", cfg.yjne, lang.jpn, tsl.y ],
+    # ["https://news.yahoo.co.jp/rss/media/bunshun/all.xml", "bunshun", cfg.yjne, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/exp/all.xml", "bbj_exp", cfg.yjne, lang.jpn, tsl.y ],
 
-    ["https://news.yahoo.co.jp/rss/media/bfj/all.xml", "bfj", cfg.bfj, lang.jpn, tsl.n ],
+    ["https://news.yahoo.co.jp/rss/media/bfj/all.xml", "bfj", cfg.bfj, lang.jpn, tsl.y ],
 
 
     # ["https://news.yahoo.co.jp/rss/topics/top-picks.xml",  "yj_top_picks", cfg.yjt ], # delete
@@ -192,7 +192,7 @@ codings = [
 ]
 
 weibo = [
-    ["https://rsshub.app/weibo/user/1743951792",    "usa_embassy_cn", cfg.usaEmCN, lang.zhs, tsl.n],
+    # ["https://rsshub.app/weibo/user/1743951792",    "usa_embassy_cn", cfg.usaEmCN, lang.zhs, tsl.n],
 
 ]
 
@@ -217,7 +217,7 @@ ershicimi = [
     # daily
     # ["https://rsshub.app/wechat/ershicimi/2jr1rwOY",        "appso",  cfg.daily, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/612703b0221f954f5e10f936"
     # ["https://rsshub.app/wechat/ershicimi/13oVxvQl",        "szdays", cfg.daily, lang.zhs, tsl.n],
-    
+
     # university
     # ["https://rsshub.app/wechat/ershicimi/dOVlr5Qe",        "whu", cfg.univ, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/23nX61yj",       "hust", cfg.univ, lang.zhs, tsl.n],
@@ -236,7 +236,7 @@ ershicimi = [
     # ["https://rsshub.app/wechat/ershicimi/DV3LxW3Y",        "zhanhao668", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/x30VLyjo",        "DongJian", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/emQ4AY34",        "youshucc", cfg.wxoa, lang.zhs, tsl.n],
-    
+
     # HIMMR
     # ["https://rsshub.app/wechat/ershicimi/4QkVznja",       "HowImetMrRight", cfg.HIMMR, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/M3eZ4LlO",        "HIMMRshanghai", cfg.HIMMR, lang.zhs, tsl.n],
@@ -244,7 +244,7 @@ ershicimi = [
     # ["https://rsshub.app/wechat/ershicimi/838JB2Mj",        "HIMMRhangchow", cfg.HIMMR, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/dOVoKa8j",          "HIMMRcanton", cfg.HIMMR, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/N3N7KWvO",         "HIMMRnanking", cfg.HIMMR, lang.zhs, tsl.n],
-    
+
     # parenting
     # ["https://rsshub.app/wechat/ershicimi/1rQAAEQZ",        "niangao-mama", cfg.prnt, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/4QkP4k3a",        "nverpai",      cfg.prnt, lang.zhs, tsl.n],
@@ -253,7 +253,7 @@ ershicimi = [
     # ["https://rsshub.app/wechat/ershicimi/kzQmK4ON",        "doctor_DX",    cfg.prnt, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/611f0dcc8fae751e236420c0"
     # ["https://rsshub.app/wechat/ershicimi/wDOq8g34",        "MotherDX",     cfg.prnt, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/dOVVerOe",        "imingbailema", cfg.prnt, lang.zhs, tsl.n],  #https://api.feeddd.org/feeds/63c2828be1190840774cd9a3
-    
+
     # general
     # ["https://rsshub.app/wechat/ershicimi/dOVo5X0j",        "kekesil",      cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/9aj6dN34",        "QbitAI",       cfg.wxoa, lang.zhs, tsl.n],
@@ -264,7 +264,7 @@ ershicimi = [
     # ["https://rsshub.app/wechat/ershicimi/Rjl0r2jD",        "douban",       cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/13ox11Ol",        "theLivings",   cfg.wxoa, lang.zhs, tsl.n],    # "https://api.feeddd.org/feeds/615d9e801269c358aa1632b9"
     # ["https://rsshub.app/wechat/ershicimi/nXQJRNQb",        "renwuma  g1980", cfg.wxoa, lang.zhs, tsl.n],
-     
+
     # ["https://rsshub.app/wechat/ershicimi/pQaDarjJ",        "xjtu", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/pQaDarjJ",        "xjtu", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://rsshub.app/wechat/ershicimi/pQaDarjJ",        "xjtu", cfg.wxoa, lang.zhs, tsl.n],
@@ -276,7 +276,7 @@ ershicimi = [
 ]
 
 weixin = [
-    # ["https://api.feeddd.org/feeds/6123cf6051e2511a827a370f",        "common_sense", cfg.wxsl, lang.zhs, tsl.n],    # 
+    # ["https://api.feeddd.org/feeds/6123cf6051e2511a827a370f",        "common_sense", cfg.wxsl, lang.zhs, tsl.n],    #
     # ["https://api.feeddd.org/feeds/6127a7c0221f954f5e110a8f",          "Cicero_sea", cfg.wxsl, lang.zhs, tsl.n],    # KQ1KZbOJ， 二十
     # ["https://api.feeddd.org/feeds/63c2828be1190840774cd9a3",      "doctor_G_child", cfg.wxoa, lang.zhs, tsl.n],
     # ["https://api.feeddd.org/feeds/612703b0221f954f5e10f936",               "appso", cfg.wxoa, lang.zhs, tsl.n],
@@ -291,7 +291,7 @@ weixin = [
 # -----------------------------------------
 def hourly():
     # YJ News must be YJFeed(), not Feed()!
-    links = newsZhs + economist + politics + zaobao + infoTech + langLearn + kbs + sputnik + bbc + nyt + reu + cdt + journalRSS + university + codings + weibo + yomiuri
+    links = newsZhs + politics + zaobao + infoTech + langLearn + sputnik + bbc + nyt + reu + cdt + journalRSS + university + codings + weibo + yomiuri
 
     # -----------------------------------------
     for rss in links:
@@ -344,17 +344,17 @@ def hourly():
             print(f"{rss[0]}\n{rss[1]}\n{e}")
     # -----------------------------------------
     # YJ News must be YJFeed()!
-    for rss in yjnews:
-        try:
-            YJFeed(
-                link  =rss[0],
-                title =rss[1],
-                config=rss[2],
-                lang  =rss[3],
-                translated =rss[4],
-            ).run()
-        except Exception as e:
-            print(f"{rss[0]}\n{rss[1]}\n{e}")
+    # for rss in yjnews:
+    #     try:
+    #         YJFeed(
+    #             link  =rss[0],
+    #             title =rss[1],
+    #             config=rss[2],
+    #             lang  =rss[3],
+    #             translated =rss[4],
+    #         ).run()
+    #     except Exception as e:
+    #         print(f"{rss[0]}\n{rss[1]}\n{e}")
 
     # --------------------------
 # def minutely():
@@ -419,5 +419,6 @@ if __name__ == '__main__':
     # test()
 
     hourly()
+    print("hourly done")
+    print("****"*3)
     # minutely()
-

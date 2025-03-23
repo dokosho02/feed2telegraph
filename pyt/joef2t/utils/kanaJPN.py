@@ -17,7 +17,7 @@ def kanaConvert(str2process):
         if (f(item["orig"])):
             orig = replacePunc(item['orig'])
             hira = replacePunc(item['hira'])
-            print(f"{orig}: {hira}")
+            # print(f"{orig}: {hira}")
             value.append(f"{orig}: {hira}\n")
     
     res = remove_duplicates_ordered(value)

@@ -67,7 +67,7 @@ class Feed():
         # print(self.link)
         # pprint(self.feed)
         self.entries = self.feed["entries"]
-        print( f"\t{TerminalColors.OKBLUE}{len(self.entries)}{TerminalColors.ENDC} - entries amount in current session" )
+        # print( f"\t{TerminalColors.OKBLUE}{len(self.entries)}{TerminalColors.ENDC} - entries amount in current session" )
     # --------------------------
     def getLinksFromEntries(self):
         self.lastString = ""
@@ -79,7 +79,7 @@ class Feed():
 
         # create file
         createFile(self.lastPath, self.lastString)
-        print(f"last file has been written to {self.lastPath}")
+        print(f"\tlast file --> {self.lastPath}")
 
         # create backup file
         self.backupString = ""
@@ -87,7 +87,7 @@ class Feed():
             for lk in self.lastLinks1:
                 self.backupString += f"{lk}\n"
             createFile(self.backupPath, self.backupString)
-            print(f"last backup file has been written to {self.backupPath}")
+            print(f"\tlast backup file --> {self.backupPath}")
         except Exception as e:
             print(f"{TerminalColors.FAIL}no last backup file - {e}{TerminalColors.ENDC}")
 
@@ -107,7 +107,7 @@ class Feed():
         self.getNewItems()
 
         updateNo = len(self.newItems)
-        self.updateInfo = f"\t{TerminalColors.OKBLUE}{updateNo} - update(s){TerminalColors.ENDC} of {TerminalColors.OKBLUE}{len(self.entries)} ({self.title}){TerminalColors.ENDC}\n\t\tat {now}"
+        self.updateInfo = f"\t{TerminalColors.OKCYAN}{updateNo}{TerminalColors.ENDC}/{TerminalColors.OKBLUE}{len(self.entries)}{TerminalColors.ENDC} - {TerminalColors.HEADER}{self.title}{TerminalColors.ENDC}\n\tat {now}"
         self.updateLog = f"{updateNo}/{len(self.entries)} ({self.title})\nat {now}\nfrom Feed2Telegraph"
 
         print(self.updateInfo)

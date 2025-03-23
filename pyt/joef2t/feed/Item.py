@@ -49,14 +49,14 @@ class Item():
 
         print(f"item - conf - {self.conf}")
 
-        print(f"""\t{self.chapterNo}\t{TerminalColors.OKCYAN}{self.title}{TerminalColors.ENDC}\n\t{self.link}\n\t{self.time}""")
+        print(f"""  {self.chapterNo}  {TerminalColors.OKCYAN}{self.title}{TerminalColors.ENDC}\n\t{self.link}\n\t{self.time}""")
 
         # ---------------
         self.html4Telegraph = f"""
         <p><a href="{self.link}">Web</a></p>\n
         <h1>{self.title}</h1>\n
         <p><br/></p>\n
-        <p>{self.time}</p>\n
+        <p>time: {self.time}</p>\n
         """
 
         if len(self.authors) >0:
@@ -67,32 +67,47 @@ class Item():
             self.kw = ", ".join(self.keyWords)
             self.html4Telegraph += f"""<p>tag(s): {self.kw}</p>\n"""
         
+        # japanese
+        self.kana_converted = ""
+        if (self.lang == langue.jpn):
+            self.kana_converted += f"""<p>{kanaConvert(retainText(self.contents))}</p>\n"""
+            print("japanese - kanaConvert-ed")
+
         # translation
         if self.translated!=0:
-            print(f"translate?: {self.translated}")
+            # print(f"translate?: {self.translated}")
             try:
                 self.translate()
-                print(self.contents)
+                # print(self.contents)
+                print("translated")
             except Exception as e:
                 print(f"problem in translation\n{e}")
 
-        # japanese
-        if (self.lang == langue.jpn):
-            self.contents += f"""<p>{kanaConvert(retainText(self.contents))}</p>\n"""
+    
+        # final
+        try:
+            if len(self.kana_converted) > 0:
+                self.contents +=  f"""\n<hr>\n{self.kana_converted}\n"""
+        except:
+            pass
+        try:
+            if len(self.translated_text) > 0:
+                self.contents +=  f"""\n<hr>\n{self.translated_text}\n"""
+        except:
+            pass                
 
         self.html4Telegraph += f"""{self.contents}\n"""
 
         # ---------------
         try:
             # self.write2sql()
-
-            self.resUrl = asyncio.run(
-                write2Telegraph(
+            # self.resUrl = asyncio.run(
+            self.resUrl = write2Telegraph(
                     title=f"{self.title} - {self.feedName}",
                     content = self.html4Telegraph,
                     author = self.au,
                 )
-            )
+            # )
             sendWord = ""
             if (len(self.keyWords)>0):
                 for k in self.keyWords:
@@ -157,7 +172,6 @@ class Item():
     #  -------------------------------------
     def translate(self):
 
-
         # convert
         h = html2text.HTML2Text()
         # Ignore converting links from HTML
@@ -171,8 +185,10 @@ class Item():
         # translate
         client = Translate()
         texts = client.translate(self.converted)
-
+        
+        self.translated_text = ""
         for t in texts:
-            self.contents += f"""\n<p>{t.translatedText.replace("&gt;", ">")}</p>\n"""
+            self.translated_text += f"""\n<p>{t.translatedText.replace("&gt;", ">")}</p>\n"""
+
 
 # ---------------------

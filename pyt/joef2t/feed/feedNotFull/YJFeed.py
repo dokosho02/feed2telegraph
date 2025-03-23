@@ -57,7 +57,6 @@ class YJFeed(NotFullFeed):
                 authors.append(author)
                 print(author)
 
-
         # multi-page
         pages = 1
         try:

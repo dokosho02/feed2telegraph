@@ -63,8 +63,14 @@ moreTimes = [
 # for mt in minuteTimes + moreTimes:
 #     schedule.every().hour.at(mt).do( work.minutely )
 
+def command_line_run_py():
+    import os
+    os.system('python3.9 work.py')
+
+command_line_run_py()
+
 for ht in hourTimes:
-    schedule.every().hour.at(ht).do( work.hourly )
+    schedule.every().hour.at(ht).do(command_line_run_py)
 
 
 for dt in dayTimes:
@@ -73,8 +79,8 @@ for dt in dayTimes:
 # ---------------------------------------
 
 # clear termimal every hour
-schedule.every().hour.at(":20").do( clearTerminal )
-schedule.every().hour.at(":47").do( clearTerminal )
+# schedule.every().hour.at(":20").do( clearTerminal )
+# schedule.every().hour.at(":47").do( clearTerminal )
 # --------------------------------------------------
 while True:
     schedule.run_pending()
