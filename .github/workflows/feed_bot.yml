@@ -17,6 +17,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+
+# 2. 设置工作目录变量（关键修复）
+    - name: Set workspace path
+      id: set-paths
+      run: |
+        echo "DATA_PATH=$GITHUB_WORKSPACE/data" >> $GITHUB_ENV
+        echo "HISTORY_FILE=$GITHUB_WORKSPACE/data/rss_updates.json" >> $GITHUB_ENV
+
     # 2. 设置Python环境
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -82,11 +90,11 @@ jobs:
       run: |
         python -m src.main
 
-    # 9. 上传更新后的历史文件
+  # 上传历史记录（使用绝对路径）
     - name: Upload history artifact
       uses: actions/upload-artifact@v4
       with:
         name: rss-history
-        path: ../../../data/rss_updates.json
+        path: ${{ env.HISTORY_FILE }}  # 使用绝对路径
         retention-days: 7
         overwrite: true
