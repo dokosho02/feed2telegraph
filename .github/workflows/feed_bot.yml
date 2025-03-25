@@ -75,6 +75,7 @@ jobs:
 # 8. 运行主程序
     - name: Run RSS Bot
       env:
+        GITHUB_ACTIONS: "true"  # 标记CI环境
         RSS_URL: ${{ secrets.RSS_URL }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
