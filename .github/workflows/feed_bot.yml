@@ -16,10 +16,6 @@ jobs:
     # 1. 检出代码（不包含data目录）
     - name: Checkout code
       uses: actions/checkout@v4
-      with:
-        sparse-checkout: |
-          !data
-          small/feed_to_telegraph
 
     # 2. 设置Python环境
     - name: Set up Python
