@@ -19,11 +19,15 @@ jobs:
 
     # 2. 设置绝对路径变量（关键修复）
     - name: Set workspace paths
+      id: set_paths
       run: |
-        echo "DATA_DIR=$GITHUB_WORKSPACE/data" >> $GITHUB_ENV
-        echo "HISTORY_FILE=$GITHUB_WORKSPACE/data/rss_updates.json" >> $GITHUB_ENV
+        DATA_DIR="$GITHUB_WORKSPACE/data"
+        HISTORY_FILE="$DATA_DIR/rss_updates.json"
+        echo "DATA_DIR=$DATA_DIR" >> $GITHUB_ENV
+        echo "HISTORY_FILE=$HISTORY_FILE" >> $GITHUB_ENV
         mkdir -p "$DATA_DIR"
         echo "数据目录已创建：$DATA_DIR"
+        echo "历史文件路径：$HISTORY_FILE"
 
     # 3. 下载历史记录（静默失败）
     - name: Download history artifact
