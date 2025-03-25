@@ -10,56 +10,70 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./small # 所有命令在small目录下执行
+        working-directory: ./small/feed_to_telegraph # 所有命令在small目录下执行
 
     steps:
-      # 1. 检出代码
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    # 1. 检出代码（不包含data目录）
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          !data
+          small/feed_to_telegraph
 
-      # 2. 设置Python环境（使用uv）
-      - name: Set up Python with uv
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-        # 安装uv（通过pip）
-      - name: Install uv
-        run: pip install uv
-        
-      # 3. 恢复历史记录文件（如果存在）
-      - name: Download previous history (if exists)
-        continue-on-error: true  # 关键修改：允许失败
-        uses: actions/download-artifact@v4
-        with:
-          name: rss-history
-          path: ../data
+    # 2. 设置Python环境
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
 
-      # 4. 安装依赖
-      - name: Sync dependencies
-        run: |
-          uv sync
+    # 3. 安装uv
+    - name: Install uv
+      run: pip install uv
 
-      # 5. 运行RSS机器人
-      - name: Run RSS Bot
-        env:
-          RSS_URL: ${{ secrets.RSS_URL }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
-        run: |
-          python -m src.main
+    # 4. 创建数据目录结构
+    - name: Prepare data directory
+      run: |
+        mkdir -p ../../../data
+        echo "数据目录准备就绪：$(realpath ../../../data)"
 
-      # 6. 保存历史记录文件
-      - name: Upload history artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: rss-history
-          path: ../data/rss_updates.json
-          retention-days: 7
+    # 5. 下载历史记录（静默失败）
+    - name: Download history artifact
+      continue-on-error: true
+      uses: actions/download-artifact@v4
+      with:
+        name: rss-history
+        path: ../../../data
 
-      # 7. 自动创建数据目录（防止首次运行报错）
-      - name: Ensure data directory exists
-        run: |
-          mkdir -p ../data
-          if [ ! -f ../data/rss_updates.json ]; then
-            echo '{}' > ../data/rss_updates.json
-          fi
+    # 6. 初始化空历史文件（如果不存在）
+    - name: Initialize history file
+      run: |
+        if [ ! -f ../../../data/rss_updates.json ]; then
+          echo '{}' > ../../../data/rss_updates.json
+          echo "初始化空历史文件"
+        else
+          echo "使用现有历史文件"
+        fi
+
+    # 4. 安装依赖
+    - name: Sync dependencies
+      run: |
+        uv sync
+
+# 8. 运行主程序
+    - name: Run RSS Bot
+      env:
+        RSS_URL: ${{ secrets.RSS_URL }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+      run: |
+        python -m src.main
+
+    # 9. 上传更新后的历史文件
+    - name: Upload history artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: rss-history
+        path: ../../../data/rss_updates.json
+        retention-days: 7
+        overwrite: true
