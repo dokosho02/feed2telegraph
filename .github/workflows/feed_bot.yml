@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./small/feed_to_telegraph
+        working-directory: .
 
     steps:
     # 1. 检出代码
@@ -52,7 +52,7 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.11"
-        
+
  # 3. 安装uv（全局安装）
     - name: Install uv globally
       run: pip install --user uv
