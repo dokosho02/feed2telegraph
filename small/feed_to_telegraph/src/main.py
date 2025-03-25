@@ -106,6 +106,8 @@ try:
     DATA_DIR = PROJECT_ROOT / "data"
     DATA_DIR.mkdir(exist_ok=True)
     HISTORY_FILE = DATA_DIR / "rss_updates.json"
+
+    print(f"history file in python file - {HISTORY_FILE}")
     CONFIG = load_config()  # 加载配置
 except Exception as e:
     print(f"❌ 初始化失败: {e}", file=sys.stderr)
