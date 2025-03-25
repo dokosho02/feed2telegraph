@@ -35,7 +35,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: rss-history
-          path: ${{ env.DATA_DIR }}
+          path: ${{ env.DATA_DIR }}/
 
       - name: Debug download
         run: |
@@ -111,7 +111,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: rss-history
-          path: ${{ env.DATA_DIR }}
+          path: ${{ env.HISTORY_FILE }}
           overwrite: true
 
       - name: Verify upload
