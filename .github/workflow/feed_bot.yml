@@ -1,0 +1,62 @@
+name: RSS to Telegram Bot
+
+on:
+  schedule:
+    - cron: "*/30 * * * *" # 每30分钟运行一次
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  rss-bot:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./small # 所有命令在small目录下执行
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. 设置Python环境（使用uv）
+      - name: Set up Python with uv
+        uses: astral-sh/uv-action@v1
+        with:
+          python-version: "3.11"
+
+      # 3. 恢复历史记录文件（如果存在）
+      - name: Download previous history
+        uses: actions/download-artifact@v4
+        with:
+          name: rss-history
+          path: ../data # 存放到根目录的data文件夹
+          if-no-files-found: warn # 首次运行时忽略缺失
+
+      # 4. 安装依赖
+      - name: Sync dependencies
+        run: |
+          uv sync
+
+      # 5. 运行RSS机器人
+      - name: Run RSS Bot
+        env:
+          RSS_URL: ${{ secrets.RSS_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+        run: |
+          python -m src.main
+
+      # 6. 保存历史记录文件
+      - name: Upload history artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rss-history
+          path: ../data/rss_updates.json
+          retention-days: 7
+
+      # 7. 自动创建数据目录（防止首次运行报错）
+      - name: Ensure data directory exists
+        run: |
+          mkdir -p ../data
+          if [ ! -f ../data/rss_updates.json ]; then
+            echo '{}' > ../data/rss_updates.json
+          fi

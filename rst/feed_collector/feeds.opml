@@ -1,0 +1,19 @@
+<opml version="1.0">
+  <head>
+    <title>My Feeds</title>
+  </head>
+  <body>
+    <outline text="Tech News" xmlUrl="https://example.com/tech.xml" />
+    <outline text="Rust Blog" xmlUrl="https://example.com/rust.xml" />
+    <outline text="Nested Category">
+      <outline text="Nested Feed" xmlUrl="https://example.com/nested.xml" />
+      <outline text="Nested Feed second" xmlUrl="https://example.com/nested_second.xml" />
+    </outline>
+    <outline text="Nested Tag">
+      <outline text="Nested Tag Feed" xmlUrl="https://example.com/nested.xml" />
+      <outline text="Nested Tag second" xmlUrl="https://example.com/nested_second.xml" />
+    </outline>
+    <outline text="Google News" xmlUrl="https://example.com/google.xml" />
+    <outline text="Rust Arena" xmlUrl="https://example.com/arena.xml" />
+  </body>
+</opml>

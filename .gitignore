@@ -13,3 +13,9 @@ build
 __pycache__
 last
 
+/data/rss_updates.json
+
+.env
+
+# Rust
+target
