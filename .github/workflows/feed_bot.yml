@@ -111,7 +111,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: rss-history
-          path: ${{ env.HISTORY_FILE }}
+          path: ${{ env.DATA_DIR }}
           overwrite: true
 
       - name: Verify upload
