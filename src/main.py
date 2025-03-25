@@ -14,40 +14,6 @@ from telegram import Bot
 from telegram.constants import ParseMode
 from tqdm import tqdm
 
-"""
-# --- 智能路径探测 ---
-def find_project_root(marker: str = ".env") -> Path:
-    # 自动定位项目根目录（根据.env文件
-    current = Path(__file__).absolute().parent  # 从当前文件位置开始
-    max_depth = 10  # 防止无限循环
-    while max_depth > 0:
-        if (current / marker).exists():
-            return current
-        if current.parent == current:  # 到达文件系统根目录
-            break
-        current = current.parent
-        max_depth -= 1
-    raise FileNotFoundError(
-        f"无法定位项目根目录（找不到 {marker} 文件）\n"
-        "请确保：\n"
-        "1. 项目根目录包含 .env 文件\n"
-        "2. 从项目目录或其子目录运行"
-    )
-
-# --- 初始化全局路径 ---
-try:
-    PROJECT_ROOT = find_project_root()
-    DATA_DIR = PROJECT_ROOT / "data"
-    DATA_DIR.mkdir(exist_ok=True)  # 确保数据目录存在
-    HISTORY_FILE = DATA_DIR / "rss_updates.json"
-except Exception as e:
-    print(f"❌ 初始化失败: {e}", file=sys.stderr)
-    sys.exit(1)
-"""
-
-import os
-import sys
-from pathlib import Path
 
 # --- 智能路径探测（兼容本地和CI）---
 def find_project_root() -> Path:
@@ -62,11 +28,11 @@ def find_project_root() -> Path:
             break
         current = current.parent
         max_depth -= 1
-    
+
     # GitHub Actions 环境回退
     if 'GITHUB_WORKSPACE' in os.environ:
         return Path(os.environ['GITHUB_WORKSPACE'])
-    
+
     raise FileNotFoundError("无法定位项目根目录")
 
 # --- 配置加载器 ---
@@ -74,7 +40,7 @@ def load_config():
     """智能加载配置（本地用.env，CI用secrets）"""
     is_ci = os.getenv('GITHUB_ACTIONS') == 'true'
     config = {}
-    
+
     if not is_ci:
         # 本地开发：从.env加载
         from dotenv import load_dotenv
@@ -83,7 +49,7 @@ def load_config():
             load_dotenv(env_path)
         else:
             print("⚠️ 本地提示：未找到.env文件，将尝试从环境变量读取")
-    
+
     # 通用加载逻辑
     config.update({
         'rss_url': os.getenv("RSS_URL"),
@@ -91,19 +57,20 @@ def load_config():
         'channel_id': os.getenv("TELEGRAM_CHANNEL"),
         'is_ci': is_ci
     })
-    
+
     # 验证必要配置
     if not all(config.values()):
         missing = [k for k, v in config.items() if not v]
         raise ValueError(f"缺少配置: {missing}\n"
                        "GitHub Actions请检查secrets，本地开发请检查.env文件")
-    
+
     return config
 
 # --- 初始化 ---
 try:
     PROJECT_ROOT = find_project_root()
-    DATA_DIR = PROJECT_ROOT / "data"
+    // DATA_DIR = PROJECT_ROOT / "data"
+    DATA_DIR = "." / "data"
     DATA_DIR.mkdir(exist_ok=True)
     HISTORY_FILE = DATA_DIR / "rss_updates.json"
 
@@ -112,7 +79,7 @@ try:
 except Exception as e:
     print(f"❌ 初始化失败: {e}", file=sys.stderr)
     sys.exit(1)
-    
+
 """
 # --- 主逻辑类 ---
 class RSS2Telegram:
@@ -145,14 +112,14 @@ class RSS2Telegram:
         self.rss_url = CONFIG['rss_url']
         self.bot_token = CONFIG['bot_token']
         self.channel_id = CONFIG['channel_id']
-        
+
         # 初始化组件
         self.telegraph = TelegraphPoster(use_api=True)
         self.telegraph.create_api_token("RSSBot")
         self.bot = Bot(token=self.bot_token)
         self.session = aiohttp.ClientSession()
         self.history = self._load_history()
-        
+
     def _load_history(self) -> Dict[str, dict]:
         """加载处理历史记录"""
         try:
