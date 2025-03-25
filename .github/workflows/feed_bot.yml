@@ -37,6 +37,13 @@ jobs:
           name: rss-history
           path: ${{ env.DATA_DIR }}
 
+      - name: Debug download
+        run: |
+          echo "下载后目录内容:"
+          ls -la data/
+          [ -f "data/rss_updates.json" ] || \
+            echo "警告: 未找到历史文件（首次运行正常）"
+
       # 4. 初始化历史文件
       - name: Initialize history file
         run: |
@@ -106,3 +113,12 @@ jobs:
           name: rss-history
           path: ${{ env.HISTORY_FILE }}
           overwrite: true
+
+      - name: Verify upload
+        run: |
+          echo "Artifact 上传完成"
+          echo "文件内容:"
+          ls -la data/
+          [ -f "data/rss_updates.json" ] && \
+            echo "文件大小: $(wc -c < data/rss_updates.json) 字节" || \
+            echo "文件未生成"
