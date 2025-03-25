@@ -70,7 +70,7 @@ def load_config():
 try:
     PROJECT_ROOT = find_project_root()
     # DATA_DIR = PROJECT_ROOT / "data"
-    DATA_DIR = "data"
+    DATA_DIR = Path("data")
     DATA_DIR.mkdir(exist_ok=True)
     HISTORY_FILE = DATA_DIR / "rss_updates.json"
 
