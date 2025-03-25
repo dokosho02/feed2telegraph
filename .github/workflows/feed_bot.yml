@@ -25,13 +25,14 @@ jobs:
         # 安装uv（通过pip）
       - name: Install uv
         run: pip install uv
+        
       # 3. 恢复历史记录文件（如果存在）
-      - name: Download previous history
+      - name: Download previous history (if exists)
+        continue-on-error: true  # 关键修改：允许失败
         uses: actions/download-artifact@v4
         with:
           name: rss-history
-          path: ../data # 存放到根目录的data文件夹
-          if-no-files-found: warn # 首次运行时忽略缺失
+          path: ../data
 
       # 4. 安装依赖
       - name: Sync dependencies
