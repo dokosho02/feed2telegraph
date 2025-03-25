@@ -17,7 +17,7 @@ from tqdm import tqdm
 
 # --- 智能路径探测（兼容本地和CI）---
 def find_project_root() -> Path:
-    """自动定位项目根目录"""
+    # 自动定位项目根目录
     current = Path(__file__).absolute().parent
     max_depth = 10
     while max_depth > 0:
@@ -37,7 +37,7 @@ def find_project_root() -> Path:
 
 # --- 配置加载器 ---
 def load_config():
-    """智能加载配置（本地用.env，CI用secrets）"""
+    # 智能加载配置（本地用.env，CI用secrets）
     is_ci = os.getenv('GITHUB_ACTIONS') == 'true'
     config = {}
 
@@ -69,7 +69,7 @@ def load_config():
 # --- 初始化 ---
 try:
     PROJECT_ROOT = find_project_root()
-    // DATA_DIR = PROJECT_ROOT / "data"
+    # DATA_DIR = PROJECT_ROOT / "data"
     DATA_DIR = "." / "data"
     DATA_DIR.mkdir(exist_ok=True)
     HISTORY_FILE = DATA_DIR / "rss_updates.json"
@@ -80,31 +80,31 @@ except Exception as e:
     print(f"❌ 初始化失败: {e}", file=sys.stderr)
     sys.exit(1)
 
-"""
-# --- 主逻辑类 ---
-class RSS2Telegram:
-    def __init__(self):
-        # 加载环境变量
-        from dotenv import load_dotenv
-        load_dotenv(PROJECT_ROOT / ".env")  # 从根目录加载
 
-        # 验证必要配置
-        self.rss_url = os.getenv("RSS_URL")
-        self.bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
-        self.channel_id = os.getenv("TELEGRAM_CHANNEL")
-        if not all([self.rss_url, self.bot_token, self.channel_id]):
-            raise ValueError(
-                "缺少必要的环境变量！请检查：\n"
-                "RSS_URL, TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL"
-            )
+# // # --- 主逻辑类 ---
+# // class RSS2Telegram:
+# //     def __init__(self):
+# //         # 加载环境变量
+# //         from dotenv import load_dotenv
+# //         load_dotenv(PROJECT_ROOT / ".env")  # 从根目录加载
 
-        # 初始化组件
-        self.telegraph = TelegraphPoster(use_api=True)
-        self.telegraph.create_api_token("RSSBot")
-        self.bot = Bot(token=self.bot_token)
-        self.session = aiohttp.ClientSession()
-        self.history = self._load_history()
-"""
+# //         # 验证必要配置
+# //         self.rss_url = os.getenv("RSS_URL")
+# //         self.bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+# //         self.channel_id = os.getenv("TELEGRAM_CHANNEL")
+# //         if not all([self.rss_url, self.bot_token, self.channel_id]):
+# //             raise ValueError(
+# //                 "缺少必要的环境变量！请检查：\n"
+# //                 "RSS_URL, TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL"
+# //             )
+
+# //         # 初始化组件
+# //         self.telegraph = TelegraphPoster(use_api=True)
+# //         self.telegraph.create_api_token("RSSBot")
+# //         self.bot = Bot(token=self.bot_token)
+# //         self.session = aiohttp.ClientSession()
+# //         self.history = self._load_history()
+
 # --- 主逻辑类 ---
 class RSS2Telegram:
     def __init__(self):
