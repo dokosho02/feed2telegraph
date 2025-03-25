@@ -19,10 +19,12 @@ jobs:
 
       # 2. 设置Python环境（使用uv）
       - name: Set up Python with uv
-        uses: astral-sh/uv-action@v1
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
+        # 安装uv（通过pip）
+      - name: Install uv
+        run: pip install uv
       # 3. 恢复历史记录文件（如果存在）
       - name: Download previous history
         uses: actions/download-artifact@v4
