@@ -110,21 +110,7 @@ try:
 except Exception as e:
     print(f"❌ 初始化失败: {e}", file=sys.stderr)
     sys.exit(1)
-
-# --- 主逻辑类 ---
-class RSS2Telegram:
-    def __init__(self):
-        # 直接使用已加载的配置
-        self.rss_url = CONFIG['rss_url']
-        self.bot_token = CONFIG['bot_token']
-        self.channel_id = CONFIG['channel_id']
-        
-        # 初始化组件
-        self.telegraph = TelegraphPoster(use_api=True)
-        self.telegraph.create_api_token("RSSBot")
-        self.bot = Bot(token=self.bot_token)
-        self.session = aiohttp.ClientSession()
-        self.history = self._load_history()
+    
 """
 # --- 主逻辑类 ---
 class RSS2Telegram:
@@ -150,6 +136,21 @@ class RSS2Telegram:
         self.session = aiohttp.ClientSession()
         self.history = self._load_history()
 """
+# --- 主逻辑类 ---
+class RSS2Telegram:
+    def __init__(self):
+        # 直接使用已加载的配置
+        self.rss_url = CONFIG['rss_url']
+        self.bot_token = CONFIG['bot_token']
+        self.channel_id = CONFIG['channel_id']
+        
+        # 初始化组件
+        self.telegraph = TelegraphPoster(use_api=True)
+        self.telegraph.create_api_token("RSSBot")
+        self.bot = Bot(token=self.bot_token)
+        self.session = aiohttp.ClientSession()
+        self.history = self._load_history()
+        
     def _load_history(self) -> Dict[str, dict]:
         """加载处理历史记录"""
         try:
