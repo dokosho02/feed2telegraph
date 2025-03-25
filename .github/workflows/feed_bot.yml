@@ -35,7 +35,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: rss-history
-          path: ${{ env.HISTORY_FILE }}
+          path: ${{ env.DATA_DIR }}
 
       # 4. 初始化历史文件
       - name: Initialize history file
@@ -105,5 +105,4 @@ jobs:
         with:
           name: rss-history
           path: ${{ env.HISTORY_FILE }}
-          retention-days: 7
           overwrite: true
