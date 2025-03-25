@@ -21,7 +21,7 @@ jobs:
     - name: Set workspace paths
       id: set_paths
       run: |
-        DATA_DIR="$GITHUB_WORKSPACE/data"
+        DATA_DIR="data"
         HISTORY_FILE="$DATA_DIR/rss_updates.json"
         echo "DATA_DIR=$DATA_DIR" >> $GITHUB_ENV
         echo "HISTORY_FILE=$HISTORY_FILE" >> $GITHUB_ENV
