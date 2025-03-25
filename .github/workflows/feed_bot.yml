@@ -23,9 +23,7 @@ jobs:
       with:
         python-version: "3.11"
 
-    # 3. 安装uv
-    - name: Install uv
-      run: pip install uv
+
 
     # 4. 创建数据目录结构
     - name: Prepare data directory
@@ -51,10 +49,28 @@ jobs:
           echo "使用现有历史文件"
         fi
 
+    # 3. 安装uv（全局安装）
+    - name: Install uv globally
+      run: pip install --user uv
+
+    # 4. 创建并激活虚拟环境
+    - name: Create virtual environment
+      run: |
+        python -m uv venv .venv
+        echo "VIRTUAL_ENV=$PWD/.venv" >> $GITHUB_ENV
+        echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
     # 4. 安装依赖
     - name: Sync dependencies
       run: |
         uv sync
+
+# 6. 验证安装
+    - name: Check installed packages
+      run: |
+        pip list
+        python -c "import aiohttp; print(f'aiohttp version: {aiohttp.__version__}')"
+
 
 # 8. 运行主程序
     - name: Run RSS Bot
