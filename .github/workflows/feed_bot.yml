@@ -36,9 +36,9 @@ jobs:
         with:
           name: rss-history
           path: ${{ env.DATA_DIR }}/
-          workflow: .github/workflows/rss-bot.yml
-          workflow_conclusion: success
+          workflow: feed_bot.yml
           github_token: ${{ github.token }}
+          workflow_conclusion: success
 
       - name: Debug download
         run: |
