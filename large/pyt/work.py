@@ -177,7 +177,7 @@ yjnews2  = [
 
 
 university = [
-    ["http://www.kyoto-u.ac.jp/ja/RSS","ktu", cfg.ktu, lang.jpn, tsl.n ],
+    # ["http://www.kyoto-u.ac.jp/ja/RSS","ktu", cfg.ktu, lang.jpn, tsl.n ],
 ]
 
 codings = [
