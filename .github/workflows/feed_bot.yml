@@ -29,13 +29,16 @@ jobs:
           echo "数据目录已创建：$DATA_DIR"
           echo "历史文件路径：$HISTORY_FILE"
 
-      # 3. 下载历史记录（静默失败）
+      # 跨运行下载历史记录
       - name: Download history artifact
         continue-on-error: true
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v3
         with:
           name: rss-history
           path: ${{ env.DATA_DIR }}/
+          workflow: .github/workflows/rss-bot.yml
+          workflow_conclusion: success
+          github_token: ${{ github.token }}
 
       - name: Debug download
         run: |
