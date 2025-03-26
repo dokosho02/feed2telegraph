@@ -122,6 +122,8 @@ class RSS2Telegram:
         """生成Telegraph页面"""
         try:
             content = f"<h1>{entry.get('title', 'Untitled')}</h1>"
+            # 添加原文链接
+            content += f'<p><a href="{entry.get("link", "")}">🔗 Link</a></p>'
 
             # 兼容不同RSS格式
             if entry.get("content"):
@@ -129,8 +131,6 @@ class RSS2Telegram:
             elif entry.get("description"):
                 content += entry["description"]
 
-            # 添加原文链接
-            content += f'<p><a href="{entry.get("link", "")}">🔗 Link</a></p>'
 
             response = self.telegraph.post(
                 title=entry.get("title", "RSS内容")[:128],  # 标题长度限制
@@ -146,9 +146,8 @@ class RSS2Telegram:
         """发送消息到Telegram频道"""
         try:
             message = (
-                f"<b>{title}</b>\n\n"
-                f"📖 <a href='{telegraph_url}'>Instant View</a>\n"
-                f"🔗 <a href='{link}'>Link</a>"
+                f"<b>{title}</b>\n"
+                f"🔗 <a href='{link}'>Link</a>\t\t📖 <a href='{telegraph_url}'>Instant View</a>"
             )
 
             await self.bot.send_message(
