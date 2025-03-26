@@ -38,6 +38,7 @@ def find_project_root() -> Path:
 # --- 配置加载器 ---
 def load_config():
     # 智能加载配置（本地用.env，CI用secrets）
+    is_ci = False
     is_ci = os.getenv('GITHUB_ACTIONS') == 'true'
     config = {}
 
@@ -55,14 +56,16 @@ def load_config():
         'rss_url': os.getenv("RSS_URL"),
         'bot_token': os.getenv("TELEGRAM_BOT_TOKEN"),
         'channel_id': os.getenv("TELEGRAM_CHANNEL"),
-        'is_ci': is_ci
+        # 'is_ci': is_ci
     })
+
+    # print(config)
 
     # 验证必要配置
     if not all(config.values()):
         missing = [k for k, v in config.items() if not v]
         raise ValueError(f"缺少配置: {missing}\n"
-                       "GitHub Actions请检查secrets，本地开发请检查.env文件")
+                       "GitHub Actions 请检查 secrets，本地开发请检查 .env 文件")
 
     return config
 
@@ -81,30 +84,6 @@ except Exception as e:
     sys.exit(1)
 
 
-# // # --- 主逻辑类 ---
-# // class RSS2Telegram:
-# //     def __init__(self):
-# //         # 加载环境变量
-# //         from dotenv import load_dotenv
-# //         load_dotenv(PROJECT_ROOT / ".env")  # 从根目录加载
-
-# //         # 验证必要配置
-# //         self.rss_url = os.getenv("RSS_URL")
-# //         self.bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
-# //         self.channel_id = os.getenv("TELEGRAM_CHANNEL")
-# //         if not all([self.rss_url, self.bot_token, self.channel_id]):
-# //             raise ValueError(
-# //                 "缺少必要的环境变量！请检查：\n"
-# //                 "RSS_URL, TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL"
-# //             )
-
-# //         # 初始化组件
-# //         self.telegraph = TelegraphPoster(use_api=True)
-# //         self.telegraph.create_api_token("RSSBot")
-# //         self.bot = Bot(token=self.bot_token)
-# //         self.session = aiohttp.ClientSession()
-# //         self.history = self._load_history()
-
 # --- 主逻辑类 ---
 class RSS2Telegram:
     def __init__(self):
@@ -115,7 +94,7 @@ class RSS2Telegram:
 
         # 初始化组件
         self.telegraph = TelegraphPoster(use_api=True)
-        self.telegraph.create_api_token("RSSBot")
+        self.telegraph.create_api_token("FeedBot")
         self.bot = Bot(token=self.bot_token)
         self.session = aiohttp.ClientSession()
         self.history = self._load_history()
