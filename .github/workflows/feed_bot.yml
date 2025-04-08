@@ -1,127 +1,127 @@
 name: RSS to Telegram Bot
 
 on:
-  schedule:
-    - cron: "50 * * * *"
-  workflow_dispatch:
+    schedule:
+        - cron: "50 * * * *"
+    workflow_dispatch:
 
 jobs:
-  rss-bot:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
+    rss-bot:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: .
 
-    steps:
-      # 1. 检出代码
-      - name: Checkout repository
-        uses: actions/checkout@v4
+        steps:
+            # 1. 检出代码
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-      # 2. 设置绝对路径变量（关键修复）
-      - name: Set workspace paths
-        id: set_paths
-        run: |
-          DATA_DIR="data"
-          HISTORY_FILE="$DATA_DIR/rss_updates.json"
-          echo "DATA_DIR=$DATA_DIR" >> $GITHUB_ENV
-          echo "HISTORY_FILE=$HISTORY_FILE" >> $GITHUB_ENV
-          mkdir -p "$DATA_DIR"
-          echo "数据目录已创建：$DATA_DIR"
-          echo "历史文件路径：$HISTORY_FILE"
+            # 2. 设置绝对路径变量（关键修复）
+            - name: Set workspace paths
+              id: set_paths
+              run: |
+                  DATA_DIR="data"
+                  HISTORY_FILE="$DATA_DIR/rss_updates.json"
+                  echo "DATA_DIR=$DATA_DIR" >> $GITHUB_ENV
+                  echo "HISTORY_FILE=$HISTORY_FILE" >> $GITHUB_ENV
+                  mkdir -p "$DATA_DIR"
+                  echo "数据目录已创建：$DATA_DIR"
+                  echo "历史文件路径：$HISTORY_FILE"
 
-      # 跨运行下载历史记录
-      - name: Download history artifact
-        continue-on-error: true
-        uses: dawidd6/action-download-artifact@v3
-        with:
-          name: rss-history
-          path: ${{ env.DATA_DIR }}/
-          workflow: feed_bot.yml
-          github_token: ${{ github.token }}
-          workflow_conclusion: success
+            # 跨运行下载历史记录
+            - name: Download history artifact
+              continue-on-error: true
+              uses: dawidd6/action-download-artifact@v9
+              with:
+                  name: rss-history
+                  path: ${{ env.DATA_DIR }}/
+                  workflow: feed_bot.yml
+                  github_token: ${{ github.token }}
+                  workflow_conclusion: success
 
-      - name: Debug download
-        run: |
-          echo "下载后目录内容:"
-          ls -la data/
-          [ -f "data/rss_updates.json" ] || \
-            echo "警告: 未找到历史文件（首次运行正常）"
+            - name: Debug download
+              run: |
+                  echo "下载后目录内容:"
+                  ls -la data/
+                  [ -f "data/rss_updates.json" ] || \
+                    echo "警告: 未找到历史文件（首次运行正常）"
 
-      # 4. 初始化历史文件
-      - name: Initialize history file
-        run: |
-          if [ ! -f "$HISTORY_FILE" ]; then
-            echo '{}' > "$HISTORY_FILE"
-            echo "初始化空历史文件"
-          else
-            echo "使用现有历史文件（大小: $(wc -c < "$HISTORY_FILE") 字节）"
-          fi
+            # 4. 初始化历史文件
+            - name: Initialize history file
+              run: |
+                  if [ ! -f "$HISTORY_FILE" ]; then
+                    echo '{}' > "$HISTORY_FILE"
+                    echo "初始化空历史文件"
+                  else
+                    echo "使用现有历史文件（大小: $(wc -c < "$HISTORY_FILE") 字节）"
+                  fi
 
-      # 5. 设置Python环境
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+            # 5. 设置Python环境
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
 
-      # 3. 安装uv（全局安装）
-      - name: Install uv globally
-        run: pip install --user uv
+            # 3. 安装uv（全局安装）
+            - name: Install uv globally
+              run: pip install --user uv
 
-      # 4. 创建并激活虚拟环境
-      - name: Create virtual environment
-        run: |
-          python -m uv venv .venv
-          echo "VIRTUAL_ENV=$PWD/.venv" >> $GITHUB_ENV
-          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+            # 4. 创建并激活虚拟环境
+            - name: Create virtual environment
+              run: |
+                  python -m uv venv .venv
+                  echo "VIRTUAL_ENV=$PWD/.venv" >> $GITHUB_ENV
+                  echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
-      # 4. 安装依赖
-      - name: Sync dependencies
-        run: |
-          uv sync
+            # 4. 安装依赖
+            - name: Sync dependencies
+              run: |
+                  uv sync
 
-      # 6. 验证安装
-      - name: Check installed packages
-        run: |
-          pip list
-          python -c "import aiohttp; print(f'aiohttp version: {aiohttp.__version__}')"
+            # 6. 验证安装
+            - name: Check installed packages
+              run: |
+                  pip list
+                  python -c "import aiohttp; print(f'aiohttp version: {aiohttp.__version__}')"
 
-      # 7. 运行主程序（传递绝对路径）
-      - name: Run RSS Bot
-        env:
-          GITHUB_ACTIONS: "true" # 标记CI环境
-          HISTORY_FILE_PATH: ${{ env.HISTORY_FILE }}
-          RSS_URL: ${{ secrets.RSS_URL }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
-        run: |
-          echo "将使用历史文件路径: $HISTORY_FILE_PATH"
-          python -m src.main
-          echo "运行后文件状态:"
-          ls -la "$DATA_DIR"
+            # 7. 运行主程序（传递绝对路径）
+            - name: Run RSS Bot
+              env:
+                  GITHUB_ACTIONS: "true" # 标记CI环境
+                  HISTORY_FILE_PATH: ${{ env.HISTORY_FILE }}
+                  RSS_URL: ${{ secrets.RSS_URL }}
+                  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+                  TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+              run: |
+                  echo "将使用历史文件路径: $HISTORY_FILE_PATH"
+                  python -m src.main
+                  echo "运行后文件状态:"
+                  ls -la "$DATA_DIR"
 
-      # 8. 验证并上传artifact
-      - name: Verify and upload history
-        run: |
-          tree
-          if [ ! -f "$HISTORY_FILE" ]; then
-            echo "::error::历史文件未生成！"
-            exit 1
-          fi
-          echo "准备上传历史文件（大小: $(wc -c < "$HISTORY_FILE") 字节）"
-        shell: bash
+            # 8. 验证并上传artifact
+            - name: Verify and upload history
+              run: |
+                  tree
+                  if [ ! -f "$HISTORY_FILE" ]; then
+                    echo "::error::历史文件未生成！"
+                    exit 1
+                  fi
+                  echo "准备上传历史文件（大小: $(wc -c < "$HISTORY_FILE") 字节）"
+              shell: bash
 
-      - name: Upload history artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: rss-history
-          path: ${{ env.HISTORY_FILE }}
-          overwrite: true
+            - name: Upload history artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: rss-history
+                  path: ${{ env.HISTORY_FILE }}
+                  overwrite: true
 
-      - name: Verify upload
-        run: |
-          echo "Artifact 上传完成"
-          echo "文件内容:"
-          ls -la data/
-          [ -f "data/rss_updates.json" ] && \
-            echo "文件大小: $(wc -c < data/rss_updates.json) 字节" || \
-            echo "文件未生成"
+            - name: Verify upload
+              run: |
+                  echo "Artifact 上传完成"
+                  echo "文件内容:"
+                  ls -la data/
+                  [ -f "data/rss_updates.json" ] && \
+                    echo "文件大小: $(wc -c < data/rss_updates.json) 字节" || \
+                    echo "文件未生成"
