@@ -247,6 +247,12 @@ wheels = [
 name = "feed-collector"
 version = "0.1.0"
 source = { virtual = "feed_collector" }
+dependencies = [
+    { name = "feedparser" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "feedparser", specifier = ">=6.0.11" }]
 
 [[package]]
 name = "feed-to-telegraph"
